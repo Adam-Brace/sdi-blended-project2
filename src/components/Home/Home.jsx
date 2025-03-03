@@ -1,38 +1,36 @@
 import { useState, useEffect } from "react";
+import PokemonCard from "../Card/PokemonCard"
+import { CircularProgress } from "@mui/material";
 
 const Carousel = () => {
-	const [images, setImages] = useState([]);
+	const [pokemons, setPokemons] = useState([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
 		const fetchAllPokemon = async () => {
-			const allPokemonImages = [];
-			for (let i = 152; i < 251; i++) {
+			const pokemonList = [];
+			for (let i = 152; i <= 251; i++) {
 				try {
 					const res = await fetch(
 						`https://pokeapi.co/api/v2/pokemon/${i}`
 					);
 					const pokemon = await res.json();
-					allPokemonImages.push({
-						id: pokemon.id,
-						src: pokemon.sprites.front_default,
-						alt: pokemon.name,
-					});
+					pokemonList.push(pokemon);
 				} catch (error) {
 					console.error("Error fetching Pokémon:", error);
 				}
 			}
-			setImages(allPokemonImages);
+			setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
 	}, []);
 
 	const handleNextClick = () => {
-		setCurrentIndex((currentIndex + 5) % images.length);
+		setCurrentIndex((currentIndex + 5) % pokemons.length);
 	};
 
 	const handlePrevClick = () => {
-		setCurrentIndex((currentIndex - 5 + images.length) % images.length);
+		setCurrentIndex((currentIndex - 5 + pokemons.length) % pokemons.length);
 	};
 
 	return (
@@ -41,19 +39,16 @@ const Carousel = () => {
 				&#x2039;
 			</button>
 			<div className="innerCarousel">
-				{images.length > 0 ? (
-					images
+				{pokemons.length > 0 ? (
+					pokemons
 						.slice(currentIndex, currentIndex + 5)
-						.map((image) => (
-							<div key={image.id} className="carousel-item">
-								<img src={image.src} alt={image.alt} />
-								<p>{image.alt}</p>
-								<p>#{image.id}</p>
-								<p>#{image.id}</p>
+						.map((pokemon) => (
+							<div key={pokemon.id} className="carousel-item">
+								<PokemonCard props={pokemon}></PokemonCard>
 							</div>
 						))
 				) : (
-					<p>Loading...</p>
+					<CircularProgress></CircularProgress>
 				)}
 			</div>
 			<button className="next" onClick={handleNextClick}>
