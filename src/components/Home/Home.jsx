@@ -5,15 +5,14 @@ const Carousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
-		const allPokemonImages = [];
-		async function fetchAllPokemon() {
+		const fetchAllPokemon = async () => {
+			const allPokemonImages = [];
 			for (let i = 152; i < 251; i++) {
 				try {
 					const res = await fetch(
 						`https://pokeapi.co/api/v2/pokemon/${i}`
 					);
 					const pokemon = await res.json();
-
 					allPokemonImages.push({
 						id: pokemon.id,
 						src: pokemon.sprites.front_default,
@@ -24,7 +23,7 @@ const Carousel = () => {
 				}
 			}
 			setImages(allPokemonImages);
-		}
+		};
 		fetchAllPokemon();
 	}, []);
 
