@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { styled } from 'styled-components';
-import Card from '../Card/Card';
+import PokemonCard from '../Card/PokemonCard';
 
 
 
@@ -9,10 +9,10 @@ import Card from '../Card/Card';
 	<h1>Optional Content</h1>
 </div>
 <div>
-	<h2>Card.name</h2>
+	<h2>PokemonCard.name</h2>
 </div>
 <div>
-	<h2>Card.img</h2>
+	<h2>PokemonCard.img</h2>
 	<h2>Shiny.img</h2>
 </div>
 <div>
