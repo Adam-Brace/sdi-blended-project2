@@ -41,14 +41,20 @@ const Carousel = () => {
 				&#x2039;
 			</button>
 			<div className="innerCarousel">
-				{images.slice(currentIndex, currentIndex + 5).map((image) => (
-					<div key={image.id} className="carousel-item">
-						<img src={image.src} alt={image.alt} />
-						<p>{image.alt}</p>
-						<p>#{image.id}</p>
-						<p>#{image.id}</p>
-					</div>
-				))}
+				{images.length > 0 ? (
+					images
+						.slice(currentIndex, currentIndex + 5)
+						.map((image) => (
+							<div key={image.id} className="carousel-item">
+								<img src={image.src} alt={image.alt} />
+								<p>{image.alt}</p>
+								<p>#{image.id}</p>
+								<p>#{image.id}</p>
+							</div>
+						))
+				) : (
+					<p>Loading...</p>
+				)}
 			</div>
 			<button className="next" onClick={handleNextClick}>
 				&#x203a;
@@ -58,30 +64,3 @@ const Carousel = () => {
 };
 
 export default Carousel;
-
-//  {pokemonList.length > 0 ? (
-// 	<div className="pokemonGrid">
-//   {pokemonList.map((pokemon) => (
-// 	  <PokemonCard key={pokemon.id} pokemon={pokemon} />
-// 	))}
-//   </div>
-// return (
-// 	<div className='App'>
-// 	  <header className='App-header'>
-// 		<h1>Pokedex</h1>
-
-// 		{loading && <p>Loading Pokémon...</p>}
-// 		{error && <p>{error}</p>}
-
-// 		  {pokemonList.length > 0 ? (
-// 			<div className="pokemonGrid">
-// 		  {pokemonList.map((pokemon) => (
-// 			  <PokemonCard key={pokemon.id} pokemon={pokemon} />
-// 			))}
-// 		  </div>
-// 		  ) : (
-// 			<p>Might Be Loading...</p>
-// 		  )}
-// 	  </header>
-// 	</div>
-// );
