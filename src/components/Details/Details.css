@@ -1,0 +1,20 @@
+.mainContainer{
+    max-width:70%;
+    height: 100vh;
+}
+
+.banner {
+	height: 5rem;
+}
+.identity{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#moves{
+  column-count: 5; /* Number of columns */
+  column-gap: 20px; /* Space between columns */
+  list-style-position: inside;
+}
