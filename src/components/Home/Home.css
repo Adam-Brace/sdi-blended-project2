@@ -2,6 +2,10 @@
 	height: 5rem;
 }
 
+.drawer {
+	padding: 10px;
+}
+
 .carousel {
 	display: flex;
 	align-items: center;

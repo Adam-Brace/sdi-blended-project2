@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import PokemonCard from "../Card/PokemonCard";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
@@ -6,6 +6,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Box from "@mui/material/Box";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 import {
 	CircularProgress,
 	Container,
@@ -18,6 +28,12 @@ import "./Home.css";
 const Carousel = () => {
 	//const [pokemons, setPokemons] = useState([]);
 	const [randomPokemons, setRandomPokemons] = useState([]);
+	const [state, setState] = useState({
+		top: false,
+		left: false,
+		bottom: false,
+		right: false,
+	});
 
 	function shuffle(array) {
 		setRandomPokemons(array.toSorted(() => Math.random() - 0.5));
@@ -43,6 +59,18 @@ const Carousel = () => {
 		fetchAllPokemon();
 	}, []);
 
+	const toggleDrawer = (anchor, open) => (event) => {
+		if (
+			event &&
+			event.type === "keydown" &&
+			(event.key === "Tab" || event.key === "Shift")
+		) {
+			return;
+		}
+
+		setState({ ...state, [anchor]: open });
+	};
+
 	return (
 		<Container>
 			<Stack divider={<Divider orientation="horizontal" flexItem />}>
@@ -56,65 +84,94 @@ const Carousel = () => {
 							inputProps={{ "aria-label": "search" }}
 						/>
 					</Search>
-					<FormGroup>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="NORMAL"
-						/>
-						<FormControlLabel control={<Checkbox />} label="FIRE" />
-						<FormControlLabel
-							control={<Checkbox />}
-							label="WATER"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="ELECTRIC"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="GRASS"
-						/>
-						<FormControlLabel control={<Checkbox />} label="ICE" />
-						<FormControlLabel
-							control={<Checkbox />}
-							label="FIGHTING"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="POISON"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="GROUND"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="FLYING"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="PSYCHIC"
-						/>
-						<FormControlLabel control={<Checkbox />} label="BUG" />
-						<FormControlLabel control={<Checkbox />} label="ROCK" />
-						<FormControlLabel
-							control={<Checkbox />}
-							label="GHOST"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="DRAGON"
-						/>
-						<FormControlLabel control={<Checkbox />} label="DARK" />
-						<FormControlLabel
-							control={<Checkbox />}
-							label="STEEL"
-						/>
-						<FormControlLabel
-							control={<Checkbox />}
-							label="FAIRY"
-						/>
-					</FormGroup>
+					{["right"].map((anchor) => (
+						<Fragment key={anchor}>
+							<Button onClick={toggleDrawer(anchor, true)}>
+								Filter
+							</Button>
+							<SwipeableDrawer
+								anchor={anchor}
+								open={state[anchor]}
+								onClose={toggleDrawer(anchor, false)}
+								onOpen={toggleDrawer(anchor, true)}
+							>
+								<FormGroup className="drawer">
+									<FormControlLabel
+										control={<Checkbox />}
+										label="NORMAL"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="FIRE"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="WATER"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="ELECTRIC"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="GRASS"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="ICE"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="FIGHTING"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="POISON"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="GROUND"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="FLYING"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="PSYCHIC"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="BUG"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="ROCK"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="GHOST"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="DRAGON"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="DARK"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="STEEL"
+									/>
+									<FormControlLabel
+										control={<Checkbox />}
+										label="FAIRY"
+									/>
+								</FormGroup>
+							</SwipeableDrawer>
+						</Fragment>
+					))}
 				</div>
 				<div className="mainBody">
 					<div className="carousel">
