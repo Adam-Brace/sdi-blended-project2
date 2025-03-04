@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import PokemonCard from "../Card/PokemonCard";
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import {
 	CircularProgress,
 	Container,
@@ -40,7 +46,76 @@ const Carousel = () => {
 	return (
 		<Container>
 			<Stack divider={<Divider orientation="horizontal" flexItem />}>
-				<div className="banner"></div>
+				<div className="banner">
+					<Search>
+						<SearchIconWrapper>
+							<SearchIcon />
+						</SearchIconWrapper>
+						<StyledInputBase
+							placeholder="Search…"
+							inputProps={{ "aria-label": "search" }}
+						/>
+					</Search>
+					<FormGroup>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="NORMAL"
+						/>
+						<FormControlLabel control={<Checkbox />} label="FIRE" />
+						<FormControlLabel
+							control={<Checkbox />}
+							label="WATER"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="ELECTRIC"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="GRASS"
+						/>
+						<FormControlLabel control={<Checkbox />} label="ICE" />
+						<FormControlLabel
+							control={<Checkbox />}
+							label="FIGHTING"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="POISON"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="GROUND"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="FLYING"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="PSYCHIC"
+						/>
+						<FormControlLabel control={<Checkbox />} label="BUG" />
+						<FormControlLabel control={<Checkbox />} label="ROCK" />
+						<FormControlLabel
+							control={<Checkbox />}
+							label="GHOST"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="DRAGON"
+						/>
+						<FormControlLabel control={<Checkbox />} label="DARK" />
+						<FormControlLabel
+							control={<Checkbox />}
+							label="STEEL"
+						/>
+						<FormControlLabel
+							control={<Checkbox />}
+							label="FAIRY"
+						/>
+					</FormGroup>
+				</div>
 				<div className="mainBody">
 					<div className="carousel">
 						<div className="innerCarousel">
@@ -58,7 +133,7 @@ const Carousel = () => {
 										</div>
 									))
 							) : (
-								<CircularProgress></CircularProgress>
+								<CircularProgress />
 							)}
 						</div>
 					</div>
@@ -69,25 +144,46 @@ const Carousel = () => {
 	);
 };
 
-// function shuffle(array) {
-// 	if (array) {
-// 		return [];
-// 	}
-// 	let currentIndex = array.length;
-
-// 	// While there remain elements to shuffle...
-// 	while (currentIndex != 0) {
-// 		// Pick a remaining element...
-// 		let randomIndex = Math.floor(Math.random() * currentIndex);
-// 		currentIndex--;
-
-// 		// And swap it with the current element.
-// 		[array[currentIndex], array[randomIndex]] = [
-// 			array[randomIndex],
-// 			array[currentIndex],
-// 		];
-// 	}
-// 	return array;
-// }
-
 export default Carousel;
+
+const Search = styled("div")(({ theme }) => ({
+	position: "relative",
+	borderRadius: theme.shape.borderRadius,
+	backgroundColor: alpha(theme.palette.common.white, 0.15),
+	"&:hover": {
+		backgroundColor: alpha(theme.palette.common.white, 0.25),
+	},
+	marginLeft: 0,
+	width: "100%",
+	[theme.breakpoints.up("sm")]: {
+		marginLeft: theme.spacing(1),
+		width: "auto",
+	},
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+	padding: theme.spacing(0, 2),
+	height: "100%",
+	position: "absolute",
+	pointerEvents: "none",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+	color: "inherit",
+	width: "100%",
+	"& .MuiInputBase-input": {
+		padding: theme.spacing(1, 1, 1, 0),
+		// vertical padding + font size from searchIcon
+		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+		transition: theme.transitions.create("width"),
+		[theme.breakpoints.up("sm")]: {
+			width: "12ch",
+			"&:focus": {
+				width: "20ch",
+			},
+		},
+	},
+}));
