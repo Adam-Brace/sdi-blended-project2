@@ -16,6 +16,7 @@ import {
 	InputBase,
 } from "@mui/material";
 import "./Home.css";
+
 const types = [
 	"NORMAL",
 	"FIRE",
@@ -36,6 +37,7 @@ const types = [
 	"STEEL",
 	"FAIRY",
 ];
+
 const Carousel = () => {
 	//const [pokemons, setPokemons] = useState([]);
 	const [randomPokemons, setRandomPokemons] = useState([]);
@@ -45,6 +47,24 @@ const Carousel = () => {
 		bottom: false,
 		right: false,
 	});
+	const [checked, setChecked] = useState(new Array(types.length).fill(true));
+
+	const handleChangeAll = (event) => {
+		const newCheckedState = new Array(types.length).fill(
+			event.target.checked
+		);
+		setChecked(newCheckedState);
+	};
+
+	const handleChangeIndividual = (index) => (event) => {
+		const newCheckedState = [...checked];
+		newCheckedState[index] = event.target.checked;
+		setChecked(newCheckedState);
+	};
+
+	// Check if all checkboxes are checked or some are checked (for indeterminate state)
+	const isAllChecked = checked.every(Boolean);
+	const isSomeChecked = checked.some(Boolean) && !isAllChecked;
 
 	function shuffle(array) {
 		setRandomPokemons(array.toSorted(() => Math.random() - 0.5));
@@ -117,12 +137,26 @@ const Carousel = () => {
 							>
 								<FormGroup className="drawer">
 									<FormControlLabel
-										control={<Checkbox defaultChecked />}
 										label="ALL POKEMON"
+										control={
+											<Checkbox
+												checked={isAllChecked}
+												indeterminate={isSomeChecked}
+												onChange={handleChangeAll}
+											/>
+										}
 									/>
-									{types.map((type) => (
+									{types.map((type, index) => (
 										<FormControlLabel
-											control={<Checkbox />}
+											key={type}
+											control={
+												<Checkbox
+													checked={checked[index]}
+													onChange={handleChangeIndividual(
+														index
+													)}
+												/>
+											}
 											label={type}
 										/>
 									))}
