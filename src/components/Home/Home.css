@@ -1,5 +1,17 @@
 .banner {
 	height: 5rem;
+	position: relative;
+}
+
+.search-field {
+	width: 70%;
+	margin-right: 10px;
+	float: left;
+}
+
+.filter-button {
+	float: right;
+	margin-right: 10px;
 }
 
 .drawer {

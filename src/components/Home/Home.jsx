@@ -1,30 +1,41 @@
 import { useState, useEffect, Fragment } from "react";
 import PokemonCard from "../Card/PokemonCard";
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Box from "@mui/material/Box";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import {
 	CircularProgress,
 	Container,
 	Grid2,
 	Stack,
 	Divider,
+	Checkbox,
+	SwipeableDrawer,
+	Button,
+	FormControlLabel,
+	FormGroup,
+	InputBase,
 } from "@mui/material";
 import "./Home.css";
-
+const types = [
+	"NORMAL",
+	"FIRE",
+	"WATER",
+	"ELECTRIC",
+	"GRASS",
+	"ICE",
+	"FIGHTING",
+	"POISON",
+	"GROUND",
+	"FLYING",
+	"PSYCHIC",
+	"BUG",
+	"ROCK",
+	"GHOST",
+	"DRAGON",
+	"DARK",
+	"STEEL",
+	"FAIRY",
+];
 const Carousel = () => {
 	//const [pokemons, setPokemons] = useState([]);
 	const [randomPokemons, setRandomPokemons] = useState([]);
@@ -74,21 +85,30 @@ const Carousel = () => {
 	return (
 		<Container>
 			<Stack divider={<Divider orientation="horizontal" flexItem />}>
-				<div className="banner">
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder="Search…"
-							inputProps={{ "aria-label": "search" }}
-						/>
-					</Search>
+				<div style={{ display: "flex", width: "100%" }}>
+					<div className="banner" style={{ width: "100%" }}>
+						<Search className="search-field">
+							<SearchIconWrapper>
+								<SearchIcon />
+							</SearchIconWrapper>
+							<StyledInputBase
+								placeholder="Search…"
+								inputProps={{ "aria-label": "search" }}
+							/>
+						</Search>
+						<Button
+							className="filter-button"
+							style={{
+								float: "right",
+								marginRight: "10px",
+							}}
+							onClick={toggleDrawer("right", true)}
+						>
+							Filter
+						</Button>
+					</div>
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>
-							<Button onClick={toggleDrawer(anchor, true)}>
-								Filter
-							</Button>
 							<SwipeableDrawer
 								anchor={anchor}
 								open={state[anchor]}
@@ -97,77 +117,15 @@ const Carousel = () => {
 							>
 								<FormGroup className="drawer">
 									<FormControlLabel
-										control={<Checkbox />}
-										label="NORMAL"
+										control={<Checkbox defaultChecked />}
+										label="ALL POKEMON"
 									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="FIRE"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="WATER"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="ELECTRIC"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="GRASS"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="ICE"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="FIGHTING"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="POISON"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="GROUND"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="FLYING"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="PSYCHIC"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="BUG"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="ROCK"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="GHOST"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="DRAGON"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="DARK"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="STEEL"
-									/>
-									<FormControlLabel
-										control={<Checkbox />}
-										label="FAIRY"
-									/>
+									{types.map((type) => (
+										<FormControlLabel
+											control={<Checkbox />}
+											label={type}
+										/>
+									))}
 								</FormGroup>
 							</SwipeableDrawer>
 						</Fragment>
