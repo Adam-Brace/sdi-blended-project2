@@ -1,5 +1,7 @@
 .card {
 	text-decoration: none;
+	width: 180px;
+	padding: 10px;
 }
 
 Typography {

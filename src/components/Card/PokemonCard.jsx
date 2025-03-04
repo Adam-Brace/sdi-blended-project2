@@ -10,9 +10,10 @@ export default function PokemonCard({ props: pokemon }) {
 		<Link to={`/details/${pokemon.id}`} key={pokemon.id}>
 			<Card className="card" sx={{ maxWidth: 345 }}>
 				<CardMedia
-					sx={{ height: 140 }}
+					sx={{ height: 175 }}
 					image={pokemon.sprites.front_default}
 					title={pokemon.name}
+					className="card-image"
 				/>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
