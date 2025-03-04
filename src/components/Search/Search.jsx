@@ -31,7 +31,7 @@ const Search = () => {
 		};
 		fetchAllPokemon();
 	}, []);
-	console.log(pokemons);
+	// console.log(pokemons);
 	return (
 		<p>
 			{pokemons?.map((pokemon) => (
