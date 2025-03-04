@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {Container, CircularProgress, Stack, Divider} from "@mui/material";
 import "./Details.css"
+import EvolutionChain from "./Evolution.jsx";
 
 
 const Details = () => {
@@ -95,7 +96,7 @@ useEffect(() => {
 
 					</div>
 					<div className = "evoLine">
-
+						<EvolutionChain pokemonId={id}/>
 					</div>
 				</Stack>
 			</Container>
