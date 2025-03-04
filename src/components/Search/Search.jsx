@@ -33,13 +33,13 @@ const Search = () => {
 	}, []);
 	// console.log(pokemons);
 	return (
-		<p>
+		<>
 			{pokemons?.map((pokemon) => (
 				<div key={pokemon.id} className="carousel-item">
 					<PokemonCard props={pokemon}></PokemonCard>
 				</div>
 			))}
-		</p>
+		</>
 	);
 };
 
