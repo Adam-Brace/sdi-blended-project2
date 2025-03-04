@@ -11,10 +11,13 @@ const Details = () => {
 
 const {id} = useParams()
 
-const [pokemon, setPokemon] = useState({});
+const [pokemon, setPokemon] = useState();
+const [evoChain, setEvoChain] = useState([]);
+
 
 useEffect(() => {
 	const fetchPokemon = async () => {
+		var typeArry = [];
 		try{
 	 		const res = await fetch(
 				`https://pokeapi.co/api/v2/pokemon/${id}`
@@ -25,49 +28,88 @@ useEffect(() => {
 			console.error("Error fetching Pokémon:", error);
 		}
 	}
+	// async function getEvolutionChain(){
+	// 	let evo = [];
+	// 	let species = await fetch(pokemon.species.url).json()
+	// 	let evolutionChain = await fetch(species).json
+	// 	evo.push()
+	// }
+
+
+	// async function doAll(){
+	// 	await fetchPokemon()
+	// 	await getEvolutionChain()
+	// }
+
+	// doAll()
+
 	fetchPokemon()
+
 
 }, []);
 
 
-	return (
 
-		<Container className="mainContainer">
-			<Stack direction="column" divider={<Divider orientation="horizontal" flexItem />} spacing={2}>
-				<div className = "banner">
-				<Link to="/">
-					<button>LogoHome</button>
-				</Link>
-				</div>
-				<div className = "identity">
-				<h1> {pokemon.name} </h1>
-				<h1></h1>
-				</div>
-				<div className = "stats">
-					<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2}>
-						<p>1</p>
-						<p>2</p>
-					</Stack>
-				</div>
-				<div className = "flavour">
 
-				</div>
-				<div className = "evoLine">
+	return pokemon ? (
 
-				</div>
-			</Stack>
-		</Container>
-	);
+			<Container className="mainContainer">
+				<Stack direction="column" divider={<Divider orientation="horizontal" flexItem />} spacing={2}>
+					<div className = "banner">
+						<Link to="/">
+							<button>LogoHome</button>
+						</Link>
+					</div>
+					<div className = "identity">
+						<h1> {pokemon.id } {pokemon.name} </h1>
+
+						<img src={pokemon.sprites.front_default} />
+						<img src={pokemon.sprites.front_shiny} />
+					</div>
+					<div className = "stats">
+						<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2}>
+							<Stack direction="column" divider={<Divider orientation="horizontal" flexItem />} spacing={2}>
+								<h3>Types</h3>
+									<ul>
+										{pokemon.types.map((item, index) => (
+											<li key={index}>{item.type.name}</li>
+										))}
+									</ul>
+									<h3>Stats</h3>
+									<ul>
+										{pokemon.stats.map((item, index) => (
+											<li key={index}>{item.stat.name} : {item.base_stat}</li>
+										))}
+									</ul>
+							</Stack>
+
+							<h3>Moves</h3>
+									<ul id='moves'>
+										{pokemon.moves.map((item, index) => (
+											<li key={index}>{item.move.name}</li>
+										))}
+									</ul>
+						</Stack>
+					</div>
+					<div className = "flavour">
+
+					</div>
+					<div className = "evoLine">
+
+					</div>
+				</Stack>
+			</Container>
+	) : <p> loading </p>
 };
 export default Details;
 
-//checks if a pokemon has been been chosen. If so it displays the specialized information from that pokemon.
-// if (displayPokemon) {
+{/* //checks if a pokemon has been been chosen. If so it displays the specialized information from that pokemon.
+// if (displayPokemon) { */}
 // 	//sets an array of types for the pokemon to be dispayed later in the code
-// 	var typeArry = [];
-// 	for (let i of pokeData[chosenPokemon - 1].types) {
-// 		typeArry.push(i.type.name);
-// 	}
+	// var typeArry = [];
+	// for (let i of pokeData[chosenPokemon - 1].types) {
+	// 	typeArry.push(i.type.name);
+	// }
 
 // 	//sets an array of moves to be displayed later in the code
 // 	var moveArry = [];
@@ -95,11 +137,11 @@ export default Details;
 // 							}
 // 						/>
 // 						<div id="types">
-// 							<h3>Types</h3>
-// 							<ul>
-// 								{typeArry.map((item, index) => (
-// 									<li key={index}>{item}</li>
-// 								))}
+							// <h3>Types</h3>
+							// <ul>
+								// {typeArry.map((item, index) => (
+								// 	<li key={index}>{item}</li>
+								// ))}
 // 							</ul>
 // 						</div>
 // 					</div>
