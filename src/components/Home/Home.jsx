@@ -16,6 +16,7 @@ import {
 	InputBase,
 } from "@mui/material";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const types = [
 	"NORMAL",
@@ -48,6 +49,11 @@ const Carousel = () => {
 		right: false,
 	});
 	const [checked, setChecked] = useState(new Array(types.length).fill(true));
+	const [searchTerm, setSearchTerm] = useState("");
+
+	const handleSearchChange = (event) => {
+		setSearchTerm(event.target.value); // Update the search term as the user types
+	};
 
 	const handleChangeAll = (event) => {
 		const newCheckedState = new Array(types.length).fill(
@@ -98,8 +104,20 @@ const Carousel = () => {
 		) {
 			return;
 		}
-
 		setState({ ...state, [anchor]: open });
+	};
+
+	const searchLink = () => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		let filter = [];
+
+		for (let i = 0; i < types.length; i++) {
+			if (checked[i]) {
+				filter.push(types[i]);
+			}
+		}
+
+		return `/search/${"undefined"}/${filter.join(" ")}`;
 	};
 
 	return (
@@ -113,9 +131,14 @@ const Carousel = () => {
 							</SearchIconWrapper>
 							<StyledInputBase
 								placeholder="Search…"
+								value={searchTerm} // Bind the input to the state
+								onChange={handleSearchChange} // Update the state on input change
 								inputProps={{ "aria-label": "search" }}
 							/>
 						</Search>
+						<Link to={searchLink()}>
+							<button>search</button>
+						</Link>
 						<Button
 							className="filter-button"
 							style={{
@@ -133,7 +156,9 @@ const Carousel = () => {
 								anchor={anchor}
 								open={state[anchor]}
 								onClose={toggleDrawer(anchor, false)}
-								onOpen={toggleDrawer(anchor, true)}
+								onOpen={() => {
+									toggleDrawer(anchor, true);
+								}}
 							>
 								<FormGroup className="drawer">
 									<FormControlLabel
