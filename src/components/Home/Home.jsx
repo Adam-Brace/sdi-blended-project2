@@ -63,7 +63,7 @@ const Carousel = () => {
 						</div>
 					</div>
 				</div>
-				w<div className="footer"></div>
+				<div className="footer"></div>
 			</Stack>
 		</Container>
 	);
