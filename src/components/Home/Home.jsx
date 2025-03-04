@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import PokemonCard from "../Card/PokemonCard"
+import PokemonCard from "../Card/PokemonCard";
 import { CircularProgress } from "@mui/material";
+import "./Home.css";
 
 const Carousel = () => {
 	const [pokemons, setPokemons] = useState([]);
