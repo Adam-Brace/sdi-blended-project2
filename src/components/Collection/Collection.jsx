@@ -42,14 +42,14 @@ const Collection = () => {
 				<Link to="/">
 					<button>LogoHome</button>
 				</Link>
-			</div>
+			</div><div className="pokemon-container">
 			{pokemons.length === 0 ? (
 				<p>Add something to your Collection</p>
 			) : (
 				pokemons.map((pokemon) => (
 					<PokemonCard key={pokemon.id} props={pokemon} />
 				))
-			)}
+			)}</div>
 		</>
 	);
 };

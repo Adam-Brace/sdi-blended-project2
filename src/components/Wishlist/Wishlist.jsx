@@ -43,13 +43,15 @@ const Wishlist = () => {
 					<button>LogoHome</button>
 				</Link>
 			</div>
-			{pokemons.length === 0 ? (
-				<p>Add something to your Wishlist</p>
-			) : (
-				pokemons.map((pokemon) => (
-					<PokemonCard key={pokemon.id} props={pokemon} />
-				))
-			)}
+			<div className="pokemon-container">
+				{pokemons.length === 0 ? (
+					<p>Add something to your Wishlist</p>
+				) : (
+					pokemons.map((pokemon) => (
+						<PokemonCard key={pokemon.id} props={pokemon} />
+					))
+				)}
+			</div>
 		</>
 	);
 };
