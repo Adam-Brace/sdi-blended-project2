@@ -151,7 +151,10 @@ const Carousel = () => {
 								/>
 							</Search>
 							<div className="button-container">
-								<Button className="search-button">
+								<Button
+									className="search-button"
+									variant="outlined"
+								>
 									<Link
 										to={searchLink()}
 										style={{

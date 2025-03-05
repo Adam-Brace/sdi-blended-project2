@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { Container, CircularProgress, Stack, Divider } from "@mui/material";
 import "./Details.css";
 import EvolutionChain from "./Evolution.jsx";
+import { Button } from "@mui/material";
 
 const Details = () => {
 	const { id } = useParams();
@@ -17,14 +18,16 @@ const Details = () => {
 	const [flavor, setFlavor] = useState([]);
 
 	useEffect(() => {
-    const storedCollection = JSON.parse(localStorage.getItem("collectionPokemon")) || [];
-    setCollection(storedCollection);
-  }, []);
+		const storedCollection =
+			JSON.parse(localStorage.getItem("collectionPokemon")) || [];
+		setCollection(storedCollection);
+	}, []);
 
 	useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
-    setWishlist(storedWishlist);
-  }, []);
+		const storedWishlist =
+			JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
+		setWishlist(storedWishlist);
+	}, []);
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
@@ -57,43 +60,47 @@ const Details = () => {
 			}
 		};
 
-
 		const fetchAll = async () => {
 			await fetchFlavor();
 			await fetchPokemon();
 		};
 
 		fetchAll();
-
-
 	}, []);
 
 	const addCollection = () => {
-    if (!pokemon) return;
+		if (!pokemon) return;
 
-    const storedCollection = JSON.parse(localStorage.getItem("collectionPokemon")) || [];
+		const storedCollection =
+			JSON.parse(localStorage.getItem("collectionPokemon")) || [];
 
-    if (storedCollection.some((p) => p.id === pokemon.id)) return;
+		if (storedCollection.some((p) => p.id === pokemon.id)) return;
 
-    const updatedCollection = [...storedCollection, pokemon];
-    setCollection(updatedCollection);
+		const updatedCollection = [...storedCollection, pokemon];
+		setCollection(updatedCollection);
 
-    localStorage.setItem("collectionPokemon", JSON.stringify(updatedCollection));
-  };
+		localStorage.setItem(
+			"collectionPokemon",
+			JSON.stringify(updatedCollection)
+		);
+	};
 
-  const addWishlist = () => {
-    if (!pokemon) return;
+	const addWishlist = () => {
+		if (!pokemon) return;
 
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
+		const storedWishlist =
+			JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
 
-    if (storedWishlist.some((p) => p.id === pokemon.id)) return;
+		if (storedWishlist.some((p) => p.id === pokemon.id)) return;
 
-    const updatedWishlist = [...storedWishlist, pokemon];
-    setWishlist(updatedWishlist);
+		const updatedWishlist = [...storedWishlist, pokemon];
+		setWishlist(updatedWishlist);
 
-    localStorage.setItem("wishlistPokemon", JSON.stringify(updatedWishlist));
-  };
-
+		localStorage.setItem(
+			"wishlistPokemon",
+			JSON.stringify(updatedWishlist)
+		);
+	};
 
 	return pokemon && flavor ? (
 		<Container className="mainContainer">
@@ -103,31 +110,40 @@ const Details = () => {
 				spacing={2}
 			>
 				<div className="banner">
-					<Link to="/">
-						<button>LogoHome</button>
-					</Link>
-					<Link to="/Collection">
-						<button>My Collection</button>
-					</Link>
+					<Stack direction="row" spacing={2} className="button">
+						<Button className="filter-button">
+							<Link
+								to="/"
+								style={{
+									textDecoration: "none",
+									color: "inherit",
+								}}
+							>
+								Home
+							</Link>
+						</Button>
+						<Button className="filter-button">
+							<Link
+								to="/Collection"
+								style={{
+									textDecoration: "none",
+									color: "inherit",
+								}}
+							>
+								My Collection
+							</Link>
+						</Button>
+					</Stack>
 				</div>
 				<div className="identity">
-				<button
-        onClick={addCollection}
-        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
-        Add To Collection
-      </button>
-			<ul className="mt-4">
-        {collection.map((p) => (
-          <li key={p.id} className="border p-2 mt-2 rounded">
-            {p.name} (ID: {p.id})
-          </li>
-        ))}
-      </ul>
-			<button
-        onClick={addWishlist}
-        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
-        Add To Wishlist
-      </button>
+					<Stack direction="row" spacing={2}>
+						<Button onClick={addCollection} className="button">
+							Add To Collection
+						</Button>
+						<Button onClick={addWishlist} className="button">
+							Add To Wishlist
+						</Button>
+					</Stack>
 					<h1>
 						{" "}
 						{pokemon.id} {pokemon.name}{" "}
@@ -184,7 +200,6 @@ const Details = () => {
 				<div className="evoLine">
 					<EvolutionChain pokemonId={id} />
 				</div>
-
 			</Stack>
 		</Container>
 	) : (

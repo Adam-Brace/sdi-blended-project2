@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
 import "./Search.css";
 import PokemonCard from "../Card/PokemonCard";
+import { Button } from "@mui/material";
 
 const Search = () => {
 	const [pokemons, setPokemons] = useState([]);
@@ -45,9 +46,17 @@ const Search = () => {
 	return (
 		<>
 			<div className="button">
-				<Link to="/">
-					<button>LogoHome</button>
-				</Link>
+				<Button className="filter-button">
+					<Link
+						to="/"
+						style={{
+							textDecoration: "none",
+							color: "inherit",
+						}}
+					>
+						Home
+					</Link>
+				</Button>
 			</div>
 			<div className="pokemon-container">
 				{pokemons.length != 0 ? (

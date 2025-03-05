@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PokemonCard from "../Card/PokemonCard";
+import { Button } from "@mui/material";
 
 const Wishlist = () => {
 	const [wishlist, setWishlist] = useState([]);
@@ -38,10 +39,18 @@ const Wishlist = () => {
 
 	return (
 		<>
-			<div>
-				<Link to="/">
-					<button>LogoHome</button>
-				</Link>
+			<div className="button">
+				<Button className="filter-button">
+					<Link
+						to="/"
+						style={{
+							textDecoration: "none",
+							color: "inherit",
+						}}
+					>
+						Home
+					</Link>
+				</Button>
 			</div>
 			<div className="pokemon-container">
 				{pokemons.length === 0 ? (
