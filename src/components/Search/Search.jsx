@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
+import "./Search.css";
 import PokemonCard from "../Card/PokemonCard";
 
 const Search = () => {
@@ -43,18 +44,22 @@ const Search = () => {
 	// console.log(pokemons);
 	return (
 		<>
-			<Link to="/">
-				<button>LogoHome</button>
-			</Link>
-			{pokemons.length != 0 ? (
-				pokemons?.map((pokemon) => (
-					<div key={pokemon.id} className="carousel-item">
-						<PokemonCard props={pokemon}></PokemonCard>
-					</div>
-				))
-			) : (
-				<p>Pokemon Not found</p>
-			)}
+			<div className="button">
+				<Link to="/">
+					<button>LogoHome</button>
+				</Link>
+			</div>
+			<div className="pokemon-container">
+				{pokemons.length != 0 ? (
+					pokemons?.map((pokemon) => (
+						<div key={pokemon.id} className="carousel-item">
+							<PokemonCard props={pokemon}></PokemonCard>
+						</div>
+					))
+				) : (
+					<p>Pokemon Not found</p>
+				)}
+			</div>
 		</>
 	);
 };

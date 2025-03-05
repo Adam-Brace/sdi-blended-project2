@@ -39,7 +39,6 @@ const types = [
 ];
 
 const Carousel = () => {
-	//const [pokemons, setPokemons] = useState([]);
 	const [randomPokemons, setRandomPokemons] = useState([]);
 	const [state, setState] = useState({
 		top: false,
@@ -85,11 +84,11 @@ const Carousel = () => {
 					);
 					const pokemon = await res.json();
 					pokemonList.push(pokemon);
-					shuffle(pokemonList);
 				} catch (error) {
 					console.error("Error fetching Pokémon:", error);
 				}
 			}
+			shuffle(pokemonList);
 			//setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
@@ -152,12 +151,7 @@ const Carousel = () => {
 								/>
 							</Search>
 							<div className="button-container">
-								<Button
-									className="search-button"
-									onClick={() =>
-										console.log("Search clicked")
-									}
-								>
+								<Button className="search-button">
 									<Link
 										to={searchLink()}
 										style={{
@@ -173,6 +167,34 @@ const Carousel = () => {
 									onClick={toggleDrawer("right", true)}
 								>
 									Filter
+								</Button>
+								<Button
+									className="filter-button"
+									onClick={toggleDrawer("right", true)}
+								>
+									<Link
+										to="/wishlist"
+										style={{
+											textDecoration: "none",
+											color: "inherit",
+										}}
+									>
+										Wishlist
+									</Link>
+								</Button>
+								<Button
+									className="filter-button"
+									onClick={toggleDrawer("right", true)}
+								>
+									<Link
+										to="/collection"
+										style={{
+											textDecoration: "none",
+											color: "inherit",
+										}}
+									>
+										Collection
+									</Link>
 								</Button>
 							</div>
 						</div>
