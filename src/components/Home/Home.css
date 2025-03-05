@@ -1,6 +1,7 @@
 .banner {
 	height: 5rem;
 	position: relative;
+	align-items: center;
 }
 
 .search-container {
