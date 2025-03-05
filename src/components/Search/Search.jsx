@@ -16,11 +16,18 @@ const Search = () => {
 						`https://pokeapi.co/api/v2/pokemon/${i}`
 					);
 					const pokemon = await res.json();
-					for (let j = 0; j < pokemon.types.length; j++) {
-						for (let k = 0; k < arr.length; k++) {
-							if (pokemon.types[j].type.name === arr[k]) {
-								pokemonList.push(pokemon);
+					for (let j = 0; j < arr.length; j++) {
+						if (pokemon.types[0].type.name === arr[j]) {
+							for (let k = 0; k < arr.length; k++) {
+								if (
+									pokemon.types.length == 1 ||
+									pokemon.types[1].type.name === arr[k]
+								) {
+									pokemonList.push(pokemon);
+									k = arr.length;
+								}
 							}
+							j = arr.length;
 						}
 					}
 				} catch (error) {
