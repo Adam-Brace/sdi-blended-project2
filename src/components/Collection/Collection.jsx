@@ -1,49 +1,57 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import PokemonCard from "../Card/PokemonCard";
 
-
-const MyCollection = () => {
-
+const Collection = () => {
 	const [collection, setCollection] = useState([]);
+	const [pokemons, setPokemons] = useState([]);
 
-  useEffect(() => {
-    const storedCollection = JSON.parse(localStorage.getItem("collectionPokemon")) || [];
-    setCollection(storedCollection);
-  }, []);
+	useEffect(() => {
+		// Get collection from localStorage
+		const storedCollection = JSON.parse(localStorage.getItem("collection"));
+		if (storedCollection && Array.isArray(storedCollection)) {
+			setCollection(storedCollection);
+		}
+	}, []); // Only run on component mount
 
-	const clearCollection = () => {
-    localStorage.removeItem("collectionPokemon"); // Remove from localStorage
-    setCollection([]); // Clear state
-  };
+	useEffect(() => {
+		const fetchAllPokemon = async () => {
+			if (collection.length > 0) {
+				const pokemonList = [];
+				for (let i = 0; i < collection.length; i++) {
+					try {
+						const res = await fetch(
+							`https://pokeapi.co/api/v2/pokemon/${collection[i]}`
+						);
+						const pokemon = await res.json();
+						pokemonList.push(pokemon);
+					} catch (error) {
+						console.error("Error fetching Pokémon:", error);
+					}
+				}
+				setPokemons(pokemonList); // Set the fetched Pokémon in the state
+			}
+		};
+
+		fetchAllPokemon();
+	}, [collection]); // Run when collection changes
 
 	return (
 		<>
-		<div>
-		<Link to="/"><button>LogoHome</button></Link>
-		</div>
-			<div className="p-4">
-      <h2 className="text-lg font-bold">Stored Pokémon</h2>
-      <ul>
-        {collection.length > 0 ? (
-          collection.map((p) => (
-            <li key={p.id} className="border p-2 mt-2 rounded">
-              {p.name} (ID: {p.id})
-            </li>
-          ))
-        ) : (
-          <p>No Pokémon in collection.</p>
-        )}
-      </ul>
-    </div>
-	<div>
-	<button
-	onClick={clearCollection}
-	className="mt-2 ml-4 px-4 py-2 bg-red-500 text-white rounded"
-	>
-	Clear Collection
-	</button>
-	</div>
-	</>
-	)
+			<div>
+				<Link to="/">
+					<button>LogoHome</button>
+				</Link>
+			</div>
+			{pokemons.length === 0 ? (
+				<p>Add something to your Collection</p>
+			) : (
+				pokemons.map((pokemon) => (
+					<PokemonCard key={pokemon.id} props={pokemon} />
+				))
+			)}
+		</>
+	);
 };
-export default MyCollection;
+
+export default Collection;
