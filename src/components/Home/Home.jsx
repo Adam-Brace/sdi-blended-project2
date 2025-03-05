@@ -5,7 +5,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
 	CircularProgress,
 	Container,
-	Grid2,
 	Stack,
 	Divider,
 	Checkbox,
@@ -108,16 +107,30 @@ const Carousel = () => {
 	};
 
 	const searchLink = () => {
-		// eslint-disable-next-line react-hooks/rules-of-hooks
 		let filter = [];
+		let search = "undefined";
 
 		for (let i = 0; i < types.length; i++) {
 			if (checked[i]) {
 				filter.push(types[i]);
 			}
 		}
+		if (filter.length != 0) {
+			filter = filter.join(" ");
+		} else {
+			filter = "undefined";
+		}
+		if (searchTerm.length != 0) {
+			search = searchTerm;
+		}
+		return `/search/${search.toLowerCase()}/${filter}`;
+	};
 
-		return `/search/${"undefined"}/${filter.join(" ")}`;
+	const handleKeyDown = (event) => {
+		if (event.key === "Enter") {
+			console.log(event.key);
+			window.location.href = searchLink();
+		}
 	};
 
 	return (
@@ -134,6 +147,7 @@ const Carousel = () => {
 								value={searchTerm} // Bind the input to the state
 								onChange={handleSearchChange} // Update the state on input change
 								inputProps={{ "aria-label": "search" }}
+								onKeyDown={handleKeyDown}
 							/>
 						</Search>
 						<Link to={searchLink()}>
