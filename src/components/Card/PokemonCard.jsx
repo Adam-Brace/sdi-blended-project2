@@ -17,17 +17,17 @@ const typeColor = {
 	grass: "rgba(119, 204, 85, 1)",
 	ice: "rgba(102, 204, 255, 1)",
 	fighting: "rgba(187, 85, 86, 1)",
-	poison: "rgba(0, 133, 255, 1)",
-	ground: "rgba(0, 133, 255, 1)",
-	flying: "rgba(0, 133, 255, 1)",
-	psychic: "rgba(0, 133, 255, 1)",
-	bug: "rgba(0, 133, 255, 1)",
-	rock: "rgba(0, 133, 255, 1)",
-	ghost: "rgba(0, 133, 255, 1)",
-	dragon: "rgba(0, 133, 255, 1)",
-	dark: "rgba(0, 133, 255, 1)",
-	steel: "rgba(0, 133, 255, 1)",
-	fairy: "rgba(0, 133, 255, 1)",
+	poison: "rgba(170, 85, 153, 1)",
+	ground: "rgba(221, 187, 85, 1)",
+	flying: "rgba(136, 153, 255, 1)",
+	psychic: "rgba(255, 85, 153, 1)",
+	bug: "rgba(170, 187, 34, 1)",
+	rock: "rgba(187, 170, 102, 1)",
+	ghost: "rgba(102, 102, 187, 1)",
+	dragon: "rgba(119, 102, 238, 1)",
+	dark: "rgba(119, 85, 85, 1)",
+	steel: "rgba(170, 170, 187, 1)",
+	fairy: "rgba(238, 153, 238, 1)",
 };
 export default function PokemonCard({ props: pokemon }) {
 	const [iconW, setIconW] = useState(<FavoriteBorderIcon />);
@@ -35,15 +35,12 @@ export default function PokemonCard({ props: pokemon }) {
 
 	useEffect(() => {
 		// Check if the Pokémon is in the collection and set the icon accordingly
-		const wish = JSON.parse(localStorage.getItem("collection")) || [];
-		if (wish.includes(pokemon.id)) {
+		const col = JSON.parse(localStorage.getItem("collection")) || [];
+		if (col.includes(pokemon.id)) {
 			setIconC(<StarIcon />);
 		} else {
 			setIconC(<StarBorderIcon />);
 		}
-	}, [pokemon.id]); // Only run this effect when the pokemon.id changes
-
-	useEffect(() => {
 		// Check if the Pokémon is in the wishlist and set the icon accordingly
 		const wish = JSON.parse(localStorage.getItem("wishlist")) || [];
 		if (wish.includes(pokemon.id)) {
@@ -86,13 +83,25 @@ export default function PokemonCard({ props: pokemon }) {
 		}
 	};
 
+	const color = () => {
+		if (pokemon.types.length == 1) {
+			return `linear-gradient(  ${
+				typeColor[pokemon.types[0].type.name]
+			},${typeColor[pokemon.types[0].type.name]}`;
+		} else {
+			return `linear-gradient(  ${
+				typeColor[pokemon.types[0].type.name]
+			},${typeColor[pokemon.types[1].type.name]}`;
+		}
+	};
+
 	return (
 		<div>
 			<Card
 				className="card"
 				sx={{ maxWidth: 345 }}
 				style={{
-					backgroundImage: `linear-gradient(#1d2e27, rgba(0, 133, 255, 1))`,
+					backgroundImage: color(),
 				}}
 			>
 				<Link
