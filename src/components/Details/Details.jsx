@@ -14,11 +14,13 @@ const {id} = useParams()
 
 const [pokemon, setPokemon] = useState();
 const [evoChain, setEvoChain] = useState([]);
+const [flavor, setFlavor] = useState([]);
+
 
 
 useEffect(() => {
 	const fetchPokemon = async () => {
-		var typeArry = [];
+
 		try{
 	 		const res = await fetch(
 				`https://pokeapi.co/api/v2/pokemon/${id}`
@@ -29,6 +31,37 @@ useEffect(() => {
 			console.error("Error fetching Pokémon:", error);
 		}
 	}
+
+	const fetchFlavor = async () => {
+
+		try{
+	 		const res = await fetch(
+				`https://pokeapi.co/api/v2/pokemon-species/${id}`
+			);
+			const data = await res.json();
+			for (let f of data.flavor_text_entries){
+				console.log(f)
+				if(f.language.name == "en"){
+					setFlavor(f.flavor_text)
+					break
+				}
+
+			}
+		} catch (error) {
+			console.error("Error fetching Pokémon:", error);
+		}
+
+	}
+
+//${flavor.flavor_text_entries[0].flavor_text}
+
+	const fetchAll = async () => {
+		await fetchFlavor()
+		await fetchPokemon()
+	}
+
+	fetchAll()
+
 	// async function getEvolutionChain(){
 	// 	let evo = [];
 	// 	let species = await fetch(pokemon.species.url).json()
@@ -44,15 +77,28 @@ useEffect(() => {
 
 	// doAll()
 
-	fetchPokemon()
-
 
 }, []);
 
+// useEffect(() => {
+// 	const fetchFlavor = async () => {
+
+// 		try{
+// 	 		const res = await fetch(
+// 				`https://pokeapi.co/api/v2/pokemon-species/${id}`
+// 			);
+// 			const data = await res.json();
+// 			setFlavor(data);
+// 		} catch (error) {
+// 			console.error("Error fetching Pokémon:", error);
+// 		}
+// 	}
+// 	fetchFlavor()
+// }, []);
 
 
 
-	return pokemon ? (
+	return pokemon && flavor ? (
 
 			<Container className="mainContainer">
 				<Stack direction="column" divider={<Divider orientation="horizontal" flexItem />} spacing={2}>
@@ -93,7 +139,12 @@ useEffect(() => {
 						</Stack>
 					</div>
 					<div className = "flavour">
-
+						<h3>Additional Info</h3>
+					<ul>
+							<li> {`Height: ${pokemon.height}`}</li>
+							<li> {`Weight: ${pokemon.weight}`}</li>
+							<li>{`Flavor Text: ${flavor}`}</li>
+					</ul>
 					</div>
 					<div className = "evoLine">
 						<EvolutionChain pokemonId={id}/>
