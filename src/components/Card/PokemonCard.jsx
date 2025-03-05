@@ -5,9 +5,15 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
+
 export default function PokemonCard({ props: pokemon }) {
 	return (
-		<Link reloadDocument to={`/details/${pokemon.id}`} key={pokemon.id}>
+		<Link
+			reloadDocument
+			to={`/details/${pokemon.id}`}
+			key={pokemon.id}
+			style={{ textDecoration: "none" }}
+		>
 			<Card className="card" sx={{ maxWidth: 345 }}>
 				<CardMedia
 					sx={{ height: 175 }}

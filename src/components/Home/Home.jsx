@@ -138,31 +138,44 @@ const Carousel = () => {
 			<Stack divider={<Divider orientation="horizontal" flexItem />}>
 				<div style={{ display: "flex", width: "100%" }}>
 					<div className="banner" style={{ width: "100%" }}>
-						<Search className="search-field">
-							<SearchIconWrapper>
-								<SearchIcon />
-							</SearchIconWrapper>
-							<StyledInputBase
-								placeholder="Search…"
-								value={searchTerm} // Bind the input to the state
-								onChange={handleSearchChange} // Update the state on input change
-								inputProps={{ "aria-label": "search" }}
-								onKeyDown={handleKeyDown}
-							/>
-						</Search>
-						<Link to={searchLink()}>
-							<button>search</button>
-						</Link>
-						<Button
-							className="filter-button"
-							style={{
-								float: "right",
-								marginRight: "10px",
-							}}
-							onClick={toggleDrawer("right", true)}
-						>
-							Filter
-						</Button>
+						<div className="search-container">
+							<Search className="search-field">
+								<SearchIconWrapper>
+									<SearchIcon />
+								</SearchIconWrapper>
+								<StyledInputBase
+									placeholder="Search…"
+									value={searchTerm} // Bind the input to the state
+									onChange={handleSearchChange} // Update the state on input change
+									inputProps={{ "aria-label": "search" }}
+									onKeyDown={handleKeyDown}
+								/>
+							</Search>
+							<div className="button-container">
+								<Button
+									className="search-button"
+									onClick={() =>
+										console.log("Search clicked")
+									}
+								>
+									<Link
+										to={searchLink()}
+										style={{
+											textDecoration: "none",
+											color: "inherit",
+										}}
+									>
+										Search
+									</Link>
+								</Button>
+								<Button
+									className="filter-button"
+									onClick={toggleDrawer("right", true)}
+								>
+									Filter
+								</Button>
+							</div>
+						</div>
 					</div>
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>

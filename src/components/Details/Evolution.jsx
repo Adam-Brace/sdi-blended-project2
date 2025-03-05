@@ -60,10 +60,10 @@ const EvolutionChain = ({ pokemonId }) => {
 			setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
-	});
+	}, [pokemons]);
 
 	return (
-		<div>
+		<>
 			<h2>Evolution Chain</h2>
 			{loading ? (
 				<p>Loading...</p>
@@ -72,7 +72,7 @@ const EvolutionChain = ({ pokemonId }) => {
 					<PokemonCard props={pokemon}></PokemonCard>
 				))
 			)}
-		</div>
+		</>
 	);
 };
 
