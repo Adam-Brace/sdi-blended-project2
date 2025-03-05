@@ -10,9 +10,21 @@ import EvolutionChain from "./Evolution.jsx";
 const Details = () => {
 	const { id } = useParams();
 
+	const [collection, setCollection] = useState([]);
+	const [wishlist, setWishlist] = useState([]);
 	const [pokemon, setPokemon] = useState();
 	const [evoChain, setEvoChain] = useState([]);
 	const [flavor, setFlavor] = useState([]);
+
+	useEffect(() => {
+    const storedCollection = JSON.parse(localStorage.getItem("collectionPokemon")) || [];
+    setCollection(storedCollection);
+  }, []);
+
+	useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
+    setWishlist(storedWishlist);
+  }, []);
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
@@ -45,7 +57,6 @@ const Details = () => {
 			}
 		};
 
-		//${flavor.flavor_text_entries[0].flavor_text}
 
 		const fetchAll = async () => {
 			await fetchFlavor();
@@ -54,36 +65,35 @@ const Details = () => {
 
 		fetchAll();
 
-		// async function getEvolutionChain(){
-		// 	let evo = [];
-		// 	let species = await fetch(pokemon.species.url).json()
-		// 	let evolutionChain = await fetch(species).json
-		// 	evo.push()
-		// }
 
-		// async function doAll(){
-		// 	await fetchPokemon()
-		// 	await getEvolutionChain()
-		// }
-
-		// doAll()
 	}, []);
 
-	// useEffect(() => {
-	// 	const fetchFlavor = async () => {
+	const addCollection = () => {
+    if (!pokemon) return;
 
-	// 		try{
-	// 	 		const res = await fetch(
-	// 				`https://pokeapi.co/api/v2/pokemon-species/${id}`
-	// 			);
-	// 			const data = await res.json();
-	// 			setFlavor(data);
-	// 		} catch (error) {
-	// 			console.error("Error fetching Pokémon:", error);
-	// 		}
-	// 	}
-	// 	fetchFlavor()
-	// }, []);
+    const storedCollection = JSON.parse(localStorage.getItem("collectionPokemon")) || [];
+
+    if (storedCollection.some((p) => p.id === pokemon.id)) return;
+
+    const updatedCollection = [...storedCollection, pokemon];
+    setCollection(updatedCollection);
+
+    localStorage.setItem("collectionPokemon", JSON.stringify(updatedCollection));
+  };
+
+  const addWishlist = () => {
+    if (!pokemon) return;
+
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
+
+    if (storedWishlist.some((p) => p.id === pokemon.id)) return;
+
+    const updatedWishlist = [...storedWishlist, pokemon];
+    setWishlist(updatedWishlist);
+
+    localStorage.setItem("wishlistPokemon", JSON.stringify(updatedWishlist));
+  };
+
 
 	return pokemon && flavor ? (
 		<Container className="mainContainer">
@@ -96,8 +106,28 @@ const Details = () => {
 					<Link to="/">
 						<button>LogoHome</button>
 					</Link>
+					<Link to="/Collection">
+						<button>My Collection</button>
+					</Link>
 				</div>
 				<div className="identity">
+				<button
+        onClick={addCollection}
+        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
+        Add To Collection
+      </button>
+			<ul className="mt-4">
+        {collection.map((p) => (
+          <li key={p.id} className="border p-2 mt-2 rounded">
+            {p.name} (ID: {p.id})
+          </li>
+        ))}
+      </ul>
+			<button
+        onClick={addWishlist}
+        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
+        Add To Wishlist
+      </button>
 					<h1>
 						{" "}
 						{pokemon.id} {pokemon.name}{" "}
@@ -154,6 +184,7 @@ const Details = () => {
 				<div className="evoLine">
 					<EvolutionChain pokemonId={id} />
 				</div>
+
 			</Stack>
 		</Container>
 	) : (
