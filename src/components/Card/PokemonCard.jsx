@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 export default function PokemonCard({ props: pokemon }) {
 	return (
-		<Link to={`/details/${pokemon.id}`} key={pokemon.id}>
+		<Link reloadDocument to={`/details/${pokemon.id}`} key={pokemon.id}>
 			<Card className="card" sx={{ maxWidth: 345 }}>
 				<CardMedia
 					sx={{ height: 175 }}
