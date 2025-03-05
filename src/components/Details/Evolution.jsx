@@ -35,32 +35,40 @@ const EvolutionChain = ({ pokemonId }) => {
 					return evolutionArray;
 				};
 
-				setEvolutions(extractEvolutions(evolutionData.chain));
+				const evolutionsList = await extractEvolutions(
+					evolutionData.chain
+				);
+				setEvolutions(evolutionsList);
 			} catch (error) {
 				console.error("Error fetching evolution data:", error);
 			}
 		};
-		fetchEvolutionChain();
 
+		fetchEvolutionChain();
+	}, [pokemonId]); // Dependency on pokemonId to refetch on change
+
+	useEffect(() => {
 		const fetchAllPokemon = async () => {
-			const pokemonList = [];
-			for (let i = 0; i < evolutions.length; i++) {
-				try {
-					const res = await fetch(
-						`https://pokeapi.co/api/v2/pokemon/${evolutions[i]}`
-					);
-					const pokemon = await res.json();
-					pokemonList.push(pokemon);
-					setLoading(false);
-				} catch (error) {
-					setLoading(false);
-					console.error("Error fetching Pokémon:", error);
+			if (evolutions.length > 0) {
+				const pokemonList = [];
+				for (let i = 0; i < evolutions.length; i++) {
+					try {
+						const res = await fetch(
+							`https://pokeapi.co/api/v2/pokemon/${evolutions[i]}`
+						);
+						const pokemon = await res.json();
+						pokemonList.push(pokemon);
+					} catch (error) {
+						console.error("Error fetching Pokémon:", error);
+					}
 				}
+				setPokemons(pokemonList);
+				setLoading(false);
 			}
-			setPokemons(pokemonList);
 		};
+
 		fetchAllPokemon();
-	}, [pokemons]);
+	}, [evolutions]); // This hook runs only when evolutions change
 
 	return (
 		<>
@@ -68,8 +76,8 @@ const EvolutionChain = ({ pokemonId }) => {
 			{loading ? (
 				<p>Loading...</p>
 			) : (
-				pokemons?.map((pokemon) => (
-					<PokemonCard props={pokemon}></PokemonCard>
+				pokemons.map((pokemon) => (
+					<PokemonCard key={pokemon.id} props={pokemon}></PokemonCard>
 				))
 			)}
 		</>
