@@ -31,6 +31,12 @@ Start the server
   npm run start
 ```
 
+## Project links
+
+-   [Kanban](https://github.com/users/Adam-Brace/projects/2/views/1)
+-   [Wireframe](https://www.figma.com/board/TgvpQE6LUADYSkwfhTLjPY/SDI-29-Project-2?node-id=0-1&t=3avPomkvflThIJVs-0)
+-   [Github](https://github.com/Adam-Brace/sdi-blended-project2)
+
 ## Authors
 
 -   [@Dytzi](https://github.com/Dytzi)
