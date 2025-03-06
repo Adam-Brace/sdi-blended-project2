@@ -133,17 +133,20 @@ const Details = () => {
 								My Collection
 							</Link>
 						</Button>
+						<Button className="filter-button">
+							<Link
+								to="/Collection"
+								style={{
+									textDecoration: "none",
+									color: "inherit",
+								}}
+							>
+								Wishlist
+							</Link>
+						</Button>
 					</Stack>
 				</div>
 				<div className="identity">
-					<Stack direction="row" spacing={2}>
-						<Button onClick={addCollection} className="button">
-							Add To Collection
-						</Button>
-						<Button onClick={addWishlist} className="button">
-							Add To Wishlist
-						</Button>
-					</Stack>
 					<h1>
 						{" "}
 						{pokemon.id} {pokemon.name}{" "}
@@ -187,17 +190,23 @@ const Details = () => {
 								))}
 							</ul>
 						</Stack>
-						<Stack direction="column" divider={<Divider orientation="horizontal" />} spacing={2}>
+						<Stack
+							direction="column"
+							divider={<Divider orientation="horizontal" />}
+							spacing={2}
+						>
 							<h3>Moves:</h3>
 							<ul id="moves">
 								{pokemon.moves.map((item, index) => (
 									<li key={index}>{item.move.name}</li>
 								))}
-						</ul>
+							</ul>
 						</Stack>
 					</Stack>
 				</div>
-				<div className="flavour"> {/* Why is there a u in flavor, guvna? */}
+				<div className="flavour">
+					{" "}
+					{/* Why is there a u in flavor, guvna? */}
 					<h3>Additional Info:</h3>
 					<ul>
 						<li key="Height"> {`Height: ${pokemon.height}`}</li>
@@ -207,9 +216,7 @@ const Details = () => {
 				</div>
 				<EvolutionChain pokemonId={id} />
 			</Stack>
-			<div style={{height: '20px'}}>
-				{/* nothing to see here */}
-			</div>
+			<div style={{ height: "20px" }}>{/* nothing to see here */}</div>
 		</Container>
 	) : (
 		<p> loading </p>
