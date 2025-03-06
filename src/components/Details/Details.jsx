@@ -205,11 +205,7 @@ const Details = () => {
 						<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
 					</ul>
 				</div>
-				<Stack direction="row" spacing={2} className="evo-box">
-					<div className="evoLine">
-						<EvolutionChain pokemonId={id} />
-					</div>
-				</Stack>
+				<EvolutionChain pokemonId={id} />
 			</Stack>
 			<div style={{height: '20px'}}>
 				{/* nothing to see here */}

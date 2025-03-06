@@ -74,11 +74,9 @@ const EvolutionChain = ({ pokemonId }) => {
 
 	return (
 		<>
-			<Stack direction="column" className="evo-row" >
-				<div className="evo-chain">
-					<h3>Evolution Chain:</h3>
-				</div>
-				<Stack direction="row" spacing={2}>
+			<Stack direction="column" className="evo-box" >
+				<h3>Evolution Chain:</h3>
+				<Stack className = "evo-row" direction="row" spacing={2}>
 				{loading ? (
 					<p>Loading...</p>
 				) : (
