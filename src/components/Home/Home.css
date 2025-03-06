@@ -43,8 +43,16 @@
 	color: #f59342;
 	-webkit-text-stroke: 1px black; /* Black border around text */
 	letter-spacing: 5px;
+	text-shadow: 4px 4px 0px #1A1A1A, 8px 8px 0px rgba(0, 0, 0, 0.2);
 	text-align: center;
 	margin-bottom: 2px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+}
+
+.search-field {
+	/* background-color: #42a5f5; */
+	border: 1px solid rgb(245, 147, 66);
 }
 
 .drawer {

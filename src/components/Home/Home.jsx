@@ -184,6 +184,9 @@ const Carousel = () => {
 										onChange={handleSearchChange} // Update the state on input change
 										inputProps={{ "aria-label": "search" }}
 										onKeyDown={handleKeyDown}
+										sx={{
+											backgroundColor: "rgba(0, 0, 0, 0.5)",
+										}}
 									/>
 								</Search>
 								<div className="button-container">
