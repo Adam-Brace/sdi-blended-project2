@@ -22,3 +22,8 @@
 	display: inline-block;
 	text-align: center;
 }
+
+.links {
+	color: #f59342;
+	font-size: 15px;
+}

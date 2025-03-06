@@ -3,6 +3,24 @@ import { useEffect, useState } from "react";
 import "./Search.css";
 import PokemonCard from "../Card/PokemonCard";
 import { Button, Stack } from "@mui/material";
+import {ThemeProvider, createTheme} from "@mui/material";
+
+const theme = createTheme({
+	components: {
+		MuiButton: {
+		defaultProps: {
+			variant: "contained", // Set "contained" as default
+		},
+		styleOverrides: {
+			root: {
+			fontSize: "1rem", // Change the default font size
+			textTransform: "none", // Optional: Remove uppercase style
+			color: "#f59342"
+			},
+		},
+		},
+	},
+	});
 
 const Search = () => {
 	const [pokemons, setPokemons] = useState([]);
@@ -45,10 +63,11 @@ const Search = () => {
 	// console.log(pokemons);
 	return (
 		<>
+			<ThemeProvider theme={theme}>
 			<div className="banner">
 				<Stack direction="row" spacing={2} className="button">
 					<Button className="filter-button">
-						<Link
+						<Link className="links"
 							to="/"
 							style={{
 								textDecoration: "none",
@@ -59,7 +78,7 @@ const Search = () => {
 						</Link>
 					</Button>
 					<Button className="filter-button">
-						<Link
+						<Link className="links"
 							to="/Collection"
 							style={{
 								textDecoration: "none",
@@ -82,6 +101,7 @@ const Search = () => {
 					<p>Pokemon Not found</p>
 				)}
 			</div>
+			</ThemeProvider>
 		</>
 	);
 };
