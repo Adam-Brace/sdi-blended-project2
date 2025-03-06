@@ -1,5 +1,5 @@
 .banner {
-	max-width: 1140px;
+	width: 1200px;
 	height: 5rem;
 	justify-content: center;
 	align-items: center;
@@ -56,11 +56,12 @@
 	color: #f59342;
 }
 
-.mainBody {
-	width: 1200px;
+.main-body {
+	width: 105%;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
-	margin-top: -50px;
+	position: relative;
+	left: -2.5%;
 }
 
 .carousel {
@@ -108,9 +109,3 @@
 .footer {
 	height: 15rem;
 }
-
-.mainBody {
-	width: 1200px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 10px;
-  }

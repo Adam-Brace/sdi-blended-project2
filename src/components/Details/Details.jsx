@@ -64,7 +64,6 @@ const Details = () => {
 			await fetchFlavor();
 			await fetchPokemon();
 		};
-
 		fetchAll();
 	}, []);
 
@@ -134,22 +133,24 @@ const Details = () => {
 							</Link>
 						</Button>
 						<Button className="filter-button">
-						<Link
-							to="/Wishlist"
-							style={{
-								textDecoration: "none",
-								color: "inherit",
-							}}
-						>
-							My Wishlist
-						</Link>
-					</Button>
+							<Link
+								to="/Wishlist"
+								style={{
+									textDecoration: "none",
+									color: "inherit",
+								}}
+							>
+								My Wishlist
+							</Link>
+						</Button>
 					</Stack>
 				</div>
 				<div className="identity">
 					<h1>
 						{" "}
-						{pokemon.id} {pokemon.name}{" "}
+						{pokemon.id}{" "}
+						{pokemon.name.charAt(0).toUpperCase() +
+							pokemon.name.slice(1)}{" "}
 					</h1>
 					<Stack direction="row" spacing={2} className="images">
 						<div>

@@ -304,7 +304,7 @@ const Carousel = () => {
 												textAlign: "center",
 												marginTop: "auto",
 												margin: "auto",
-												marginBottom: "auto",
+												marginBottom: "30px",
 											}}
 										>
 											<Link
@@ -322,8 +322,9 @@ const Carousel = () => {
 							</Fragment>
 						))}
 					</div>
-
-					<div className="mainBody">
+					<Stack
+						className="main-body"
+					>
 						<div className="carousel">
 							<Button
 								className="prev-button"
@@ -374,7 +375,7 @@ const Carousel = () => {
 								&#x203a;
 							</Button>
 						</div>
-					</div>
+					</Stack>
 					<div className="footer"></div>
 				</Stack>
 			</ThemeProvider>

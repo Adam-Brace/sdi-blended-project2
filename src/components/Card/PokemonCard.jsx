@@ -36,6 +36,7 @@ export default function PokemonCard({ props: pokemon }) {
 	useEffect(() => {
 		// Check if the Pokémon is in the collection and set the icon accordingly
 		const col = JSON.parse(localStorage.getItem("collection")) || [];
+
 		if (col.includes(pokemon.id)) {
 			setIconC(<StarIcon />);
 		} else {
@@ -114,13 +115,17 @@ export default function PokemonCard({ props: pokemon }) {
 					<CardMedia
 						sx={{ height: 175 }}
 						image={pokemon.sprites.front_default}
-						title={pokemon.name}
+						title={
+							pokemon.name.charAt(0).toUpperCase() +
+							pokemon.name.slice(1)
+						}
 						className="card-image"
 					/>
 				</Link>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
-						{pokemon.name}
+						{pokemon.name.charAt(0).toUpperCase() +
+							pokemon.name.slice(1)}
 					</Typography>
 					<div
 						style={{
