@@ -41,7 +41,7 @@ const Search = () => {
 			setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
-	}, []);
+	});
 	// console.log(pokemons);
 	return (
 		<>

@@ -53,6 +53,15 @@
 	padding: auto;
 }
 
+.prev-button, .next-button {
+	cursor: pointer;
+	font-size: 120px;
+	background: none;
+	padding: 50px;
+	border: none;
+	outline: none;
+}
+
 .innerCarousel {
 	display: flex;
 	margin: 10px;

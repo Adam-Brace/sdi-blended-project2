@@ -39,6 +39,7 @@ const types = [
 ];
 
 const Carousel = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
 	const [randomPokemons, setRandomPokemons] = useState([]);
 	const [state, setState] = useState({
 		top: false,
@@ -136,11 +137,11 @@ const Carousel = () => {
 	};
 
 	const handleNextClick = () => {
-    setCurrentIndex((currentIndex + 4) % images.length);
+    setCurrentIndex((currentIndex + 4) % randomPokemons.length);
   };
 
   const handlePrevClick = () => {
-    setCurrentIndex((currentIndex - 4 + images.length) % images.length);
+    setCurrentIndex((currentIndex - 4 + randomPokemons.length) % randomPokemons.length);
   };
 
 	return (
@@ -284,10 +285,24 @@ const Carousel = () => {
 				</div>
 				<div className="mainBody">
 					<div className="carousel">
+					<Button
+							className="prev-button"
+							onClick={handlePrevClick}
+							sx={{
+								fontSize: '120px',
+								cursor: 'pointer',
+								padding: '50px',
+								border: 'none',
+								outline: 'none',
+								backgroundImage: 'none',
+							}}
+						>
+							&#x2039;
+						</Button>
 						<div className="innerCarousel">
 							{randomPokemons.length > 4 ? (
 								randomPokemons
-									.slice(0, 0 + 4)
+									.slice(currentIndex, currentIndex + 4)
 									.map((pokemon) => (
 										<div
 											key={pokemon.id}
@@ -302,6 +317,20 @@ const Carousel = () => {
 								<CircularProgress />
 							)}
 						</div>
+						<Button
+							className="next-button"
+							onClick={handleNextClick}
+							sx={{
+								fontSize: '120px',
+								cursor: 'pointer',
+								padding: '50px',
+								border: 'none',
+								outline: 'none',
+								backgroundImage: 'none',
+							}}
+						>
+							&#x203a;
+						</Button>
 					</div>
 				</div>
 				<div className="footer"></div>
