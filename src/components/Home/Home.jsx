@@ -13,9 +13,27 @@ import {
 	FormControlLabel,
 	FormGroup,
 	InputBase,
+	createTheme,
+	ThemeProvider
 } from "@mui/material";
 import "./Home.css";
 import { Link } from "react-router-dom";
+const theme = createTheme({
+	components: {
+	  MuiButton: {
+		defaultProps: {
+		  variant: "outlined", // Set "contained" as default
+		},
+		styleOverrides: {
+		  root: {
+			fontSize: "1rem", // Change the default font size
+			textTransform: "none", // Optional: Remove uppercase style
+		  },
+		},
+	  },
+	},
+  });
+  
 
 const types = [
 	"NORMAL",
@@ -148,142 +166,26 @@ const Carousel = () => {
 
 	return (
 		<Container>
-			<Stack divider={<Divider orientation="horizontal" flexItem />}>
-				<div style={{ display: "flex", width: "100%" }}>
-					<div className="banner" style={{ width: "100%" }}>
-						<div className="search-container">
-							<Search className="search-field">
-								<SearchIconWrapper>
-									<SearchIcon />
-								</SearchIconWrapper>
-								<StyledInputBase
-									placeholder="Search…"
-									value={searchTerm} // Bind the input to the state
-									onChange={handleSearchChange} // Update the state on input change
-									inputProps={{ "aria-label": "search" }}
-									onKeyDown={handleKeyDown}
-								/>
-							</Search>
-							<div className="button-container">
-								<Button
-									className="search-button"
-									variant="outlined"
-								>
-									<Link
-										to={searchLink()}
-										style={{
-											textDecoration: "none",
-											color: "inherit",
-										}}
-									>
-										Search
-									</Link>
-								</Button>
-								<Button
-									className="filter-button"
-									onClick={toggleDrawer("right", true)}
-								>
-									Filter
-								</Button>
-								<Button
-									className="filter-button"
-									onClick={toggleDrawer("right", true)}
-								>
-									<Link
-										to="/wishlist"
-										style={{
-											textDecoration: "none",
-											color: "inherit",
-										}}
-									>
-										My Wishlist
-									</Link>
-								</Button>
-								<Button
-									className="filter-button"
-									onClick={toggleDrawer("right", true)}
-								>
-									<Link
-										to="/collection"
-										style={{
-											textDecoration: "none",
-											color: "inherit",
-										}}
-									>
-										My Collection
-									</Link>
-								</Button>
-							</div>
-						</div>
-					</div>
-					{["right"].map((anchor) => (
-						<Fragment key={anchor}>
-							<SwipeableDrawer
-								anchor={anchor}
-								open={state[anchor]}
-								onClose={toggleDrawer(anchor, false)}
-								onOpen={() => {
-									toggleDrawer(anchor, true);
-								}}
-								slotProps={{
-									paper: {
-										style: {
-											backgroundColor: "transparent",
-											borderLeft: "1px solid #42a5f5",
-										},
-									},
-								}}
-							>
-								<Stack
-									sx={{
-										height: "100%",
-										backgroundColor: "rgba(0, 0, 0, 0.4)",
-									}}
-								>
-									<FormGroup
-										className="drawer"
-										style={{
-											color: "#42a5f5",
-											width: "200px",
-											padding: "10px",
-										}}
-									>
-										<FormControlLabel
-											label="ALL POKEMON"
-											control={
-												<Checkbox
-													checked={isAllChecked}
-													indeterminate={isSomeChecked}
-													onChange={handleChangeAll}
-												/>
-											}
-										/>
-										{types.map((type, index) => (
-											<FormControlLabel
-												key={type}
-												sx={{ marginLeft: 2 }}
-												control={
-													<Checkbox
-														checked={checked[index]}
-														onChange={handleChangeIndividual(
-															index
-														)}
-													/>
-												}
-												label={type}
-											/>
-										))}
-									</FormGroup>
+			<ThemeProvider theme={theme}>
+				<Stack divider={<Divider orientation="horizontal" flexItem />}>
+					<div style={{ display: "flex", width: "100%" }}>
+						<div className="banner" style={{ width: "100%" }}>
+							<div className="search-container">
+								<Search className="search-field">
+									<SearchIconWrapper>
+										<SearchIcon />
+									</SearchIconWrapper>
+									<StyledInputBase
+										placeholder="Search…"
+										value={searchTerm} // Bind the input to the state
+										onChange={handleSearchChange} // Update the state on input change
+										inputProps={{ "aria-label": "search" }}
+										onKeyDown={handleKeyDown}
+									/>
+								</Search>
+								<div className="button-container">
 									<Button
 										className="search-button"
-										variant="outlined"
-										sx={{
-											width: "70%",
-											textAlign: "center",
-											marginTop: "auto",
-											margin: "auto",
-											marginBottom: " 30px",
-										}}
 									>
 										<Link
 											to={searchLink()}
@@ -295,61 +197,180 @@ const Carousel = () => {
 											Search
 										</Link>
 									</Button>
-								</Stack>
-							</SwipeableDrawer>
-						</Fragment>
-					))}
-				</div>
-				<div className="mainBody">
-					<div className="carousel">
-						<Button
-							className="prev-button"
-							onClick={handlePrevClick}
-							sx={{
-								fontSize: "120px",
-								cursor: "pointer",
-								padding: "50px",
-								border: "none",
-								outline: "none",
-							}}
-						>
-							&#x2039;
-						</Button>
-						<div className="innerCarousel">
-							{randomPokemons.length > 4 ? (
-								randomPokemons
-									.slice(currentIndex, currentIndex + 4)
-									.map((pokemon) => (
-										<div
-											key={pokemon.id}
-											className="carousel-item"
+									<Button
+										className="filter-button"
+										onClick={toggleDrawer("right", true)}
+									>
+										Filter
+									</Button>
+									<Button
+										className="filter-button"
+										onClick={toggleDrawer("right", true)}
+									>
+										<Link
+											to="/wishlist"
+											style={{
+												textDecoration: "none",
+												color: "inherit",
+											}}
 										>
-											<PokemonCard
-												props={pokemon}
-											></PokemonCard>
-										</div>
-									))
-							) : (
-								<CircularProgress />
-							)}
+											My Wishlist
+										</Link>
+									</Button>
+									<Button
+										className="filter-button"
+										onClick={toggleDrawer("right", true)}
+									>
+										<Link
+											to="/collection"
+											style={{
+												textDecoration: "none",
+												color: "inherit",
+											}}
+										>
+											My Collection
+										</Link>
+									</Button>
+								</div>
+							</div>
 						</div>
-						<Button
-							className="next-button"
-							onClick={handleNextClick}
-							sx={{
-								fontSize: "120px",
-								cursor: "pointer",
-								padding: "50px",
-								border: "none",
-								outline: "none",
-							}}
-						>
-							&#x203a;
-						</Button>
+						{["right"].map((anchor) => (
+							<Fragment key={anchor}>
+								<SwipeableDrawer
+									anchor={anchor}
+									open={state[anchor]}
+									onClose={toggleDrawer(anchor, false)}
+									onOpen={() => {
+										toggleDrawer(anchor, true);
+									}}
+									slotProps={{
+										paper: {
+											style: {
+												backgroundColor: "transparent",
+												borderLeft: "1px solid #42a5f5",
+											},
+										},
+									}}
+								>
+									<Stack
+										sx={{
+											height: "100%",
+											backgroundColor: "rgba(0, 0, 0, 0.4)",
+										}}
+									>
+										<FormGroup
+											className="drawer"
+											style={{
+												color: "#42a5f5",
+												width: "200px",
+												padding: "10px",
+											}}
+										>
+											<FormControlLabel
+												label="ALL POKEMON"
+												control={
+													<Checkbox
+														checked={isAllChecked}
+														indeterminate={isSomeChecked}
+														onChange={handleChangeAll}
+													/>
+												}
+											/>
+											{types.map((type, index) => (
+												<FormControlLabel
+													key={type}
+													sx={{ marginLeft: 2 }}
+													control={
+														<Checkbox
+															checked={checked[index]}
+															onChange={handleChangeIndividual(
+																index
+															)}
+														/>
+													}
+													label={type}
+												/>
+											))}
+										</FormGroup>
+										<Button
+											className="search-button"
+											variant="outlined"
+											sx={{
+												width: "70%",
+												textAlign: "center",
+												marginTop: "auto",
+												margin: "auto",
+												marginBottom: " 30px",
+											}}
+										>
+											<Link
+												to={searchLink()}
+												style={{
+													textDecoration: "none",
+													color: "inherit",
+												}}
+											>
+												Search
+											</Link>
+										</Button>
+									</Stack>
+								</SwipeableDrawer>
+							</Fragment>
+						))}
 					</div>
-				</div>
-				<div className="footer"></div>
-			</Stack>
+					<div className="mainBody">
+						<div className="carousel">
+							<Button
+								className="prev-button"
+								onClick={handlePrevClick}
+								sx={{
+									fontSize: "120px",
+									cursor: "pointer",
+									padding: "50px",
+									border: "1px solid #42A5F5",
+									borderRadius: "10px",
+									outline: 'none',
+								  }}
+							>
+								&#x2039;
+							</Button>
+							<div className="innerCarousel">
+								{randomPokemons.length > 4 ? (
+									randomPokemons
+										.slice(currentIndex, currentIndex + 4)
+										.map((pokemon) => (
+											<div
+												key={pokemon.id}
+												className="carousel-item"
+											>
+												<PokemonCard
+													props={pokemon}
+												></PokemonCard>
+											</div>
+										))
+								) : (
+									<CircularProgress />
+								)}
+							</div>
+							<Button
+								className="next-button"
+								onClick={handleNextClick}
+								sx={{
+									fontSize: "120px",
+									cursor: "pointer",
+									padding: "50px",
+									border: "1px solid #42A5F5",
+									borderRadius: "10px",
+									outline: 'none',
+								  }}
+							>
+								&#x203a;
+							</Button>
+						</div>
+					</div>
+					<div className="footer"></div>
+				</Stack>
+			</ThemeProvider>
 		</Container>
 	);
 };
