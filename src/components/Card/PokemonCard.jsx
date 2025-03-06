@@ -32,12 +32,10 @@ const typeColor = {
 export default function PokemonCard({ props: pokemon }) {
 	const [iconW, setIconW] = useState(<FavoriteBorderIcon />);
 	const [iconC, setIconC] = useState(<StarBorderIcon />);
-	const [name, setName] = useState("");
 
 	useEffect(() => {
 		// Check if the Pokémon is in the collection and set the icon accordingly
 		const col = JSON.parse(localStorage.getItem("collection")) || [];
-		let temp;
 
 		if (col.includes(pokemon.id)) {
 			setIconC(<StarIcon />);
@@ -51,9 +49,6 @@ export default function PokemonCard({ props: pokemon }) {
 		} else {
 			setIconW(<FavoriteBorderIcon />);
 		}
-		temp = pokemon.name.split("");
-		temp[0] = temp[0].toUpperCase();
-		setName(temp);
 	}, [pokemon.id]); // Only run this effect when the pokemon.id changes
 
 	const handleIconWClick = () => {
@@ -120,13 +115,17 @@ export default function PokemonCard({ props: pokemon }) {
 					<CardMedia
 						sx={{ height: 175 }}
 						image={pokemon.sprites.front_default}
-						title={name}
+						title={
+							pokemon.name.charAt(0).toUpperCase() +
+							pokemon.name.slice(1)
+						}
 						className="card-image"
 					/>
 				</Link>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
-						{name}
+						{pokemon.name.charAt(0).toUpperCase() +
+							pokemon.name.slice(1)}
 					</Typography>
 					<div
 						style={{
