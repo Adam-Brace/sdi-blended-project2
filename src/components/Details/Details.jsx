@@ -7,6 +7,24 @@ import { Container, CircularProgress, Stack, Divider } from "@mui/material";
 import "./Details.css";
 import EvolutionChain from "./Evolution.jsx";
 import { Button } from "@mui/material";
+import {ThemeProvider, createTheme} from "@mui/material";
+
+const theme = createTheme({
+	components: {
+		MuiButton: {
+		defaultProps: {
+			variant: "contained", // Set "contained" as default
+		},
+		styleOverrides: {
+			root: {
+			fontSize: "1rem", // Change the default font size
+			textTransform: "none", // Optional: Remove uppercase style
+			color: "#f59342"
+			},
+		},
+		},
+	},
+	});
 
 const Details = () => {
 	const { id } = useParams();
@@ -103,6 +121,7 @@ const Details = () => {
 
 	return pokemon && flavor ? (
 		<Container className="mainContainer">
+			<ThemeProvider theme={theme}>
 			<Stack
 				direction="column"
 				divider={<Divider orientation="horizontal" flexItem />}
@@ -111,7 +130,7 @@ const Details = () => {
 				<div className="banner">
 					<Stack direction="row" spacing={2} className="button">
 						<Button className="filter-button">
-							<Link
+							<Link className="links"
 								to="/"
 								style={{
 									textDecoration: "none",
@@ -122,7 +141,7 @@ const Details = () => {
 							</Link>
 						</Button>
 						<Button className="filter-button">
-							<Link
+							<Link className="links"
 								to="/Collection"
 								style={{
 									textDecoration: "none",
@@ -133,7 +152,7 @@ const Details = () => {
 							</Link>
 						</Button>
 						<Button className="filter-button">
-							<Link
+							<Link className="links"
 								to="/Wishlist"
 								style={{
 									textDecoration: "none",
@@ -218,6 +237,7 @@ const Details = () => {
 				<EvolutionChain pokemonId={id} />
 			</Stack>
 			<div style={{ height: "20px" }}>{/* nothing to see here */}</div>
+			</ThemeProvider>
 		</Container>
 	) : (
 		<p> loading </p>
