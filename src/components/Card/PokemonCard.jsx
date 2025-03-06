@@ -102,6 +102,7 @@ export default function PokemonCard({ props: pokemon }) {
 				sx={{ maxWidth: 345 }}
 				style={{
 					backgroundImage: color(),
+					borderRadius: "10px",
 				}}
 			>
 				<Link
