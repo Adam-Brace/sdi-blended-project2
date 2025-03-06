@@ -121,11 +121,20 @@ export default function PokemonCard({ props: pokemon }) {
 					<Typography gutterBottom variant="h5" component="div">
 						{pokemon.name}
 					</Typography>
-					<div onClick={handleIconWClick}>
-						{iconW} {/* Display the favorite icon */}
-					</div>
-					<div onClick={handleIconCClick}>
-						{iconC} {/* Display the favorite icon */}
+					<div
+						style={{
+							display: "flex",
+						}}
+					>
+						<div onClick={handleIconWClick}>
+							{iconW} {/* Display the favorite icon */}
+						</div>
+						<div
+							onClick={handleIconCClick}
+							style={{ marginLeft: "5px" }}
+						>
+							{iconC} {/* Display the favorite icon */}
+						</div>
 					</div>
 				</CardContent>
 			</Card>

@@ -1,7 +1,7 @@
 import PokemonCard from "../Card/PokemonCard";
 import React, { useState, useEffect } from "react";
-import { Stack } from "@mui/material"
-import "./Details.css"
+import { Stack } from "@mui/material";
+import "./Details.css";
 
 const EvolutionChain = ({ pokemonId }) => {
 	const [evolutions, setEvolutions] = useState([]);
@@ -74,18 +74,21 @@ const EvolutionChain = ({ pokemonId }) => {
 
 	return (
 		<>
-			<Stack direction="column" className="evo-row" >
+			<Stack direction="column" className="evo-row">
 				<div className="evo-chain">
 					<h3>Evolution Chain:</h3>
 				</div>
 				<Stack direction="row" spacing={2}>
-				{loading ? (
-					<p>Loading...</p>
-				) : (
-					pokemons.map((pokemon) => (
-						<PokemonCard key={pokemon.id} props={pokemon}></PokemonCard>
-					))
-				)}
+					{loading ? (
+						<p>Loading...</p>
+					) : (
+						pokemons.map((pokemon) => (
+							<PokemonCard
+								key={pokemon.id}
+								props={pokemon}
+							></PokemonCard>
+						))
+					)}
 				</Stack>
 			</Stack>
 		</>

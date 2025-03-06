@@ -1,52 +1,55 @@
-.mainContainer{
-  max-width:70%;
-  height: 100vh;
-  margin-bottom: 20px;
+.mainContainer {
+	max-width: 70%;
+	height: 100vh;
+	margin-bottom: 20px;
 }
 
 .banner {
 	height: 5rem;
 }
-.identity{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.identity {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
-.images{
-  text-align: center;
+.images {
+	text-align: center;
 }
 
 .images > div {
-  margin: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+	margin: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 }
 
 .stats {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  padding: 20px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	padding: 20px;
 }
 
-#moves{
-  column-count: 5; /* Number of columns */
-  column-gap: 20px; /* Space between columns */
-  list-style-position: inside;
+#moves {
+	column-count: 5; /* Number of columns */
+	column-gap: 20px; /* Space between columns */
+	list-style-position: inside;
 }
 
 .flavour {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  padding: 0 20px 20px 20px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	padding: 0 20px 20px 20px;
 }
 
 .evo-box {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	padding: auto;
 }
 
 .evo-row {
-  padding: 0 20px 20px 20px ;
+	padding: 0 20px 20px 20px;
+	text-align: center;
+	margin: auto;
 }
