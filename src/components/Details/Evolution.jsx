@@ -1,7 +1,7 @@
 import PokemonCard from "../Card/PokemonCard";
 import React, { useState, useEffect } from "react";
-import { Stack } from "@mui/material"
-import "./Details.css"
+import { Stack } from "@mui/material";
+import "./Details.css";
 
 const EvolutionChain = ({ pokemonId }) => {
 	const [evolutions, setEvolutions] = useState([]);

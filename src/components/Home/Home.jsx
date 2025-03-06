@@ -219,7 +219,6 @@ const Carousel = () => {
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>
 							<SwipeableDrawer
-								className="drawer"
 								anchor={anchor}
 								open={state[anchor]}
 								onClose={toggleDrawer(anchor, false)}
@@ -235,6 +234,12 @@ const Carousel = () => {
 									},
 								}}
 							>
+								<Stack
+									sx={{
+										height: "100%",
+										backgroundColor: "rgba(0, 0, 0, 0.4)",
+									}}
+								>
 								<FormGroup
 									className="drawer"
 									style={{
@@ -276,7 +281,7 @@ const Carousel = () => {
 										width: "70%",
 										textAlign: "center",
 										marginTop: "auto",
-										marginLeft: 2,
+										margin: "auto",
 										marginBottom: " 30px",
 									}}
 								>
@@ -290,6 +295,7 @@ const Carousel = () => {
 										Search
 									</Link>
 								</Button>
+								</Stack>
 							</SwipeableDrawer>
 						</Fragment>
 					))}
