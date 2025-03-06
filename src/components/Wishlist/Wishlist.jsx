@@ -39,18 +39,31 @@ const Wishlist = () => {
 
 	return (
 		<>
-			<div className="button">
-				<Button className="filter-button">
-					<Link
-						to="/"
-						style={{
-							textDecoration: "none",
-							color: "inherit",
-						}}
-					>
-						Home
-					</Link>
-				</Button>
+			<div className="banner">
+				<Stack direction="row" spacing={2} className="button">
+					<Button className="filter-button">
+						<Link
+							to="/"
+							style={{
+								textDecoration: "none",
+								color: "inherit",
+							}}
+						>
+							Home
+						</Link>
+					</Button>
+					<Button className="filter-button">
+						<Link
+							to="/Collection"
+							style={{
+								textDecoration: "none",
+								color: "inherit",
+							}}
+						>
+							My Collection
+						</Link>
+					</Button>
+				</Stack>
 			</div>
 			<div className="pokemon-container">
 				{pokemons.length === 0 ? (

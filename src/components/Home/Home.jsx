@@ -196,7 +196,7 @@ const Carousel = () => {
 											color: "inherit",
 										}}
 									>
-										Wishlist
+										My Wishlist
 									</Link>
 								</Button>
 								<Button
@@ -210,7 +210,7 @@ const Carousel = () => {
 											color: "inherit",
 										}}
 									>
-										Collection
+										My Collection
 									</Link>
 								</Button>
 							</div>
