@@ -148,9 +148,16 @@ const Details = () => {
 						{" "}
 						{pokemon.id} {pokemon.name}{" "}
 					</h1>
-
-					<img src={pokemon.sprites.front_default} />
-					<img src={pokemon.sprites.front_shiny} />
+					<Stack direction="row" spacing={2} className="images">
+						<div>
+							<h6>Regular</h6>
+							<img src={pokemon.sprites.front_default} />
+						</div>
+						<div>
+							<h6>Shiny</h6>
+							<img src={pokemon.sprites.front_shiny} />
+						</div>
+					</Stack>
 				</div>
 				<div className="stats">
 					<Stack
@@ -165,13 +172,13 @@ const Details = () => {
 							}
 							spacing={2}
 						>
-							<h3>Types</h3>
+							<h3>Types:</h3>
 							<ul>
 								{pokemon.types.map((item, index) => (
 									<li key={index}>{item.type.name}</li>
 								))}
 							</ul>
-							<h3>Stats</h3>
+							<h3>Stats:</h3>
 							<ul>
 								{pokemon.stats.map((item, index) => (
 									<li key={index}>
@@ -180,27 +187,33 @@ const Details = () => {
 								))}
 							</ul>
 						</Stack>
-
-						<h3>Moves</h3>
-						<ul id="moves">
-							{pokemon.moves.map((item, index) => (
-								<li key={index}>{item.move.name}</li>
-							))}
+						<Stack direction="column" divider={<Divider orientation="horizontal" />} spacing={2}>
+							<h3>Moves:</h3>
+							<ul id="moves">
+								{pokemon.moves.map((item, index) => (
+									<li key={index}>{item.move.name}</li>
+								))}
 						</ul>
+						</Stack>
 					</Stack>
 				</div>
-				<div className="flavour">
-					<h3>Additional Info</h3>
+				<div className="flavour"> {/* Why is there a u in flavor, guvna? */}
+					<h3>Additional Info:</h3>
 					<ul>
 						<li key="Height"> {`Height: ${pokemon.height}`}</li>
 						<li key="Weight"> {`Weight: ${pokemon.weight}`}</li>
 						<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
 					</ul>
 				</div>
-				<div className="evoLine">
-					<EvolutionChain pokemonId={id} />
-				</div>
+				<Stack direction="row" spacing={2} className="evo-box">
+					<div className="evoLine">
+						<EvolutionChain pokemonId={id} />
+					</div>
+				</Stack>
 			</Stack>
+			<div style={{height: '20px'}}>
+				{/* nothing to see here */}
+			</div>
 		</Container>
 	) : (
 		<p> loading </p>
