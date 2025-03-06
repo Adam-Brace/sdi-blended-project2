@@ -64,6 +64,10 @@ const Carousel = () => {
 		const newCheckedState = [...checked];
 		newCheckedState[index] = event.target.checked;
 		setChecked(newCheckedState);
+		if (checked.every(Boolean) && !event.target.checked) {
+			setChecked(new Array(types.length).fill(false));
+			setChecked((prevChecked) => prevChecked.map((_, i) => i === index));
+		}
 	};
 
 	// Check if all checkboxes are checked or some are checked (for indeterminate state)
@@ -211,6 +215,14 @@ const Carousel = () => {
 								onOpen={() => {
 									toggleDrawer(anchor, true);
 								}}
+								slotProps={{
+									paper: {
+										style: {
+											backgroundColor: 'transparent',
+											borderLeft: '1px solid #42a5f5'
+										},
+									},
+								}}
 							>
 								<FormGroup className="drawer">
 									<FormControlLabel
@@ -226,6 +238,7 @@ const Carousel = () => {
 									{types.map((type, index) => (
 										<FormControlLabel
 											key={type}
+											sx={{marginLeft: 2}}
 											control={
 												<Checkbox
 													checked={checked[index]}
@@ -237,7 +250,51 @@ const Carousel = () => {
 											label={type}
 										/>
 									))}
+									<Button
+									className="search-button"
+									variant="outlined"
+									sx={{
+										width: '70%',
+										textAlign: 'center',
+										marginTop: 'auto',
+										marginLeft: 2,
+									}}
+								>
+									<Link
+										to={searchLink()}
+										style={{
+											textDecoration: "none",
+											color: "inherit",
+										}}
+									>
+										Search
+									</Link>
+								</Button>
 								</FormGroup>
+								{/* <Button
+									className="search-button"
+									variant="outlined"
+									sx={{
+										width: '70%',
+										textAlign: 'center',
+										margin: '0 auto',
+										backgroundColor: 'transparent',
+										boxShadow: 'none',
+										'&:hover': {
+											backgroundColor: 'rgba(0, 0, 0, 0.3)'
+										}
+									}}
+								>
+									<Link
+										to={searchLink()}
+										style={{
+											textDecoration: "none",
+											color: "inherit",
+										}}
+									>
+										Search
+									</Link>
+								</Button> */}
 							</SwipeableDrawer>
 						</Fragment>
 					))}
