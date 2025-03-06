@@ -22,12 +22,13 @@ const theme = createTheme({
 	components: {
 	  MuiButton: {
 		defaultProps: {
-		  variant: "outlined", // Set "contained" as default
+		  variant: "contained", // Set "contained" as default
 		},
 		styleOverrides: {
 		  root: {
 			fontSize: "1rem", // Change the default font size
 			textTransform: "none", // Optional: Remove uppercase style
+			color: "#f59342"
 		  },
 		},
 	  },
@@ -166,6 +167,8 @@ const Carousel = () => {
 
 	return (
 		<Container>
+								<h1 className="hometitle">PokéSearch Machine</h1>
+
 			<ThemeProvider theme={theme}>
 				<Stack divider={<Divider orientation="horizontal" flexItem />}>
 					<div style={{ display: "flex", width: "100%" }}>
@@ -234,6 +237,7 @@ const Carousel = () => {
 								</div>
 							</div>
 						</div>
+
 						{["right"].map((anchor) => (
 							<Fragment key={anchor}>
 								<SwipeableDrawer
@@ -247,7 +251,7 @@ const Carousel = () => {
 										paper: {
 											style: {
 												backgroundColor: "transparent",
-												borderLeft: "1px solid #42a5f5",
+												borderLeft: "1px solid #f59342",
 											},
 										},
 									}}
@@ -261,7 +265,7 @@ const Carousel = () => {
 										<FormGroup
 											className="drawer"
 											style={{
-												color: "#42a5f5",
+												color: "#f59342",
 												width: "200px",
 												padding: "10px",
 											}}
@@ -300,7 +304,7 @@ const Carousel = () => {
 												textAlign: "center",
 												marginTop: "auto",
 												margin: "auto",
-												marginBottom: "auto",
+												marginBottom: "30px",
 											}}
 										>
 											<Link
@@ -318,7 +322,9 @@ const Carousel = () => {
 							</Fragment>
 						))}
 					</div>
-					<div className="mainBody">
+					<Stack
+						className="main-body"
+					>
 						<div className="carousel">
 							<Button
 								className="prev-button"
@@ -327,7 +333,7 @@ const Carousel = () => {
 									fontSize: "120px",
 									cursor: "pointer",
 									padding: "50px",
-									border: "1px solid #42A5F5",
+									border: "1px solid #f59342",
 									borderRadius: "10px",
 									outline: "none",
 									backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -360,7 +366,7 @@ const Carousel = () => {
 									fontSize: "120px",
 									cursor: "pointer",
 									padding: "50px",
-									border: "1px solid #42A5F5",
+									border: "1px solid #f59342",
 									borderRadius: "10px",
 									outline: 'none',
 									backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -369,7 +375,7 @@ const Carousel = () => {
 								&#x203a;
 							</Button>
 						</div>
-					</div>
+					</Stack>
 					<div className="footer"></div>
 				</Stack>
 			</ThemeProvider>
