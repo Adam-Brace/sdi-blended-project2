@@ -219,7 +219,6 @@ const Carousel = () => {
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>
 							<SwipeableDrawer
-								className="drawer"
 								anchor={anchor}
 								open={state[anchor]}
 								onClose={toggleDrawer(anchor, false)}
@@ -236,6 +235,7 @@ const Carousel = () => {
 								}}
 							>
 								<FormGroup
+									className="drawer"
 									style={{
 										color: "#42a5f5",
 										width: "200px",
