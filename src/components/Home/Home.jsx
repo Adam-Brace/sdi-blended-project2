@@ -33,7 +33,7 @@ const theme = createTheme({
 	  },
 	},
   });
-  
+
 
 const types = [
 	"NORMAL",
@@ -197,7 +197,6 @@ const Carousel = () => {
 											Search
 										</Link>
 									</Button>
-<<<<<<< HEAD
 									<Button
 										className="filter-button"
 										onClick={toggleDrawer("right", true)}
@@ -214,37 +213,6 @@ const Carousel = () => {
 												textDecoration: "none",
 												color: "inherit",
 											}}
-=======
-								</Stack>
-							</SwipeableDrawer>
-						</Fragment>
-					))}
-				</div>
-				<div className="mainBody">
-					<div className="carousel">
-						<Button
-							className="prev-button"
-							onClick={handlePrevClick}
-							sx={{
-								fontSize: "120px",
-								cursor: "pointer",
-								padding: "50px",
-								border: "1px solid #42a5f5",
-								borderRadius: "10px",
-								outline: "none",
-							}}
-						>
-							&#x2039;
-						</Button>
-						<div className="innerCarousel">
-							{randomPokemons.length > 4 ? (
-								randomPokemons
-									.slice(currentIndex, currentIndex + 4)
-									.map((pokemon) => (
-										<div
-											key={pokemon.id}
-											className="carousel-item"
->>>>>>> 0e2efebbf92178cac5172f0e469bc7c41af2d53b
 										>
 											My Wishlist
 										</Link>
@@ -266,7 +234,6 @@ const Carousel = () => {
 								</div>
 							</div>
 						</div>
-<<<<<<< HEAD
 						{["right"].map((anchor) => (
 							<Fragment key={anchor}>
 								<SwipeableDrawer
@@ -333,7 +300,7 @@ const Carousel = () => {
 												textAlign: "center",
 												marginTop: "auto",
 												margin: "auto",
-												marginBottom: " 30px",
+												marginBottom: "auto",
 											}}
 										>
 											<Link
@@ -350,22 +317,6 @@ const Carousel = () => {
 								</SwipeableDrawer>
 							</Fragment>
 						))}
-=======
-						<Button
-							className="next-button"
-							onClick={handleNextClick}
-							sx={{
-								fontSize: "120px",
-								cursor: "pointer",
-								padding: "50px",
-								border: "1px solid #42a5f5",
-								borderRadius: "10px",
-								outline: "none",
-							}}
-						>
-							&#x203a;
-						</Button>
->>>>>>> 0e2efebbf92178cac5172f0e469bc7c41af2d53b
 					</div>
 					<div className="mainBody">
 						<div className="carousel">
@@ -378,12 +329,13 @@ const Carousel = () => {
 									padding: "50px",
 									border: "1px solid #42A5F5",
 									borderRadius: "10px",
-									outline: 'none',
+									outline: "none",
+									backgroundColor: "rgba(0, 0, 0, 0.6)",
 								  }}
 							>
 								&#x2039;
 							</Button>
-							<div className="innerCarousel">
+							<div className="inner-carousel">
 								{randomPokemons.length > 4 ? (
 									randomPokemons
 										.slice(currentIndex, currentIndex + 4)
@@ -411,7 +363,8 @@ const Carousel = () => {
 									border: "1px solid #42A5F5",
 									borderRadius: "10px",
 									outline: 'none',
-								  }}
+									backgroundColor: "rgba(0, 0, 0, 0.6)",
+								}}
 							>
 								&#x203a;
 							</Button>
