@@ -219,6 +219,7 @@ const Carousel = () => {
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>
 							<SwipeableDrawer
+								className="drawer"
 								anchor={anchor}
 								open={state[anchor]}
 								onClose={toggleDrawer(anchor, false)}
@@ -234,7 +235,13 @@ const Carousel = () => {
 									},
 								}}
 							>
-								<FormGroup className="drawer">
+								<FormGroup
+									style={{
+										color: "#42a5f5",
+										width: "200px",
+										padding: "10px",
+									}}
+								>
 									<FormControlLabel
 										label="ALL POKEMON"
 										control={
@@ -269,6 +276,7 @@ const Carousel = () => {
 										textAlign: "center",
 										marginTop: "auto",
 										marginLeft: 2,
+										marginBottom: " 30px",
 									}}
 								>
 									<Link
@@ -296,7 +304,6 @@ const Carousel = () => {
 								padding: "50px",
 								border: "none",
 								outline: "none",
-								backgroundImage: "none",
 							}}
 						>
 							&#x2039;
@@ -328,7 +335,6 @@ const Carousel = () => {
 								padding: "50px",
 								border: "none",
 								outline: "none",
-								backgroundImage: "none",
 							}}
 						>
 							&#x203a;
