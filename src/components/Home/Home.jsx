@@ -33,7 +33,7 @@ const theme = createTheme({
 	  },
 	},
   });
-  
+
 
 const types = [
 	"NORMAL",
@@ -300,7 +300,7 @@ const Carousel = () => {
 												textAlign: "center",
 												marginTop: "auto",
 												margin: "auto",
-												marginBottom: " 30px",
+												marginBottom: "auto",
 											}}
 										>
 											<Link
@@ -329,12 +329,13 @@ const Carousel = () => {
 									padding: "50px",
 									border: "1px solid #42A5F5",
 									borderRadius: "10px",
-									outline: 'none',
+									outline: "none",
+									backgroundColor: "rgba(0, 0, 0, 0.6)",
 								  }}
 							>
 								&#x2039;
 							</Button>
-							<div className="innerCarousel">
+							<div className="inner-carousel">
 								{randomPokemons.length > 4 ? (
 									randomPokemons
 										.slice(currentIndex, currentIndex + 4)
@@ -362,7 +363,8 @@ const Carousel = () => {
 									border: "1px solid #42A5F5",
 									borderRadius: "10px",
 									outline: 'none',
-								  }}
+									backgroundColor: "rgba(0, 0, 0, 0.6)",
+								}}
 							>
 								&#x203a;
 							</Button>

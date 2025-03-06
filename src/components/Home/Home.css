@@ -68,18 +68,26 @@
 	right: -5px;
 }
 
-.innerCarousel {
+.inner-carousel {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	gap: 10px;
 	margin: 10px;
 	padding: 5px;
-	scroll-behavior: smooth;
+	flex-wrap: nowrap;
+	height: 100%;
+	position: relative;
+	/* scroll-behavior: smooth; */
 }
 
 .carousel-item {
-	text-align: center;
+	display: inline-block;
+	/* align-items: center;
+	text-align: center; */
 	padding: 10px;
+	/* margin: auto; */
+	vertical-align: middle;
 }
 
 .footer {
