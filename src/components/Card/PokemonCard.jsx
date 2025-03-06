@@ -126,12 +126,13 @@ export default function PokemonCard({ props: pokemon }) {
 							display: "flex",
 						}}
 					>
-						<div onClick={handleIconWClick}>
+						<div onClick={handleIconWClick} role="button">
 							{iconW} {/* Display the favorite icon */}
 						</div>
 						<div
 							onClick={handleIconCClick}
 							style={{ marginLeft: "5px" }}
+							role="button"
 						>
 							{iconC} {/* Display the favorite icon */}
 						</div>

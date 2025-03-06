@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Home from "../Home/Home";
 import Wishlist from "../Wishlist/Wishlist";
 import Collection from "../Collection/Collection";

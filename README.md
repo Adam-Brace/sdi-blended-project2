@@ -1,12 +1,45 @@
-# React + Vite
+# PokéSearch Machine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Problem Statement - I need an app that lets me search pokemon by name or with attribute filters if I do not know the specific pokemon. After I have found the pokemon I am searching for, I want to see its specifc statistics like type, moveset etc. I also want to be able to add the pokemon to a couple lists. One list will be "My Collection" to simulate the current pokemon I have captured for the game they are playing. And another list, call it wishlist, for pokemon they are still looking for.
 
-Currently, two official plugins are available:
+User Statement -
+As a User, I want to be able to search for a Pokemon and see its moves, types, weaknesses, and base stats so I can be a more effective fighter.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run Locally
 
-## Expanding the ESLint configuration
+Clone the project
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+  git clone https://github.com/Adam-Brace/sdi-blended-project2.git
+```
+
+Go to the project directory
+
+```bash
+  cd sdi-blended-project2
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+## Project links
+
+-   [Kanban](https://github.com/users/Adam-Brace/projects/2/views/1)
+-   [Wireframe](https://www.figma.com/board/TgvpQE6LUADYSkwfhTLjPY/SDI-29-Project-2?node-id=0-1&t=3avPomkvflThIJVs-0)
+-   [Github](https://github.com/Adam-Brace/sdi-blended-project2)
+
+## Authors
+
+-   [@Dytzi](https://github.com/Dytzi)
+-   [@marquesj85](https://github.com/marquesj85)
+-   [@mynameist04st3r](https://github.com/mynameist04st3r)
+-   [@Adam-Brace](https://github.com/Adam-Brace)
