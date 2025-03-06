@@ -219,6 +219,7 @@ const Carousel = () => {
 					{["right"].map((anchor) => (
 						<Fragment key={anchor}>
 							<SwipeableDrawer
+								className="drawer"
 								anchor={anchor}
 								open={state[anchor]}
 								onClose={toggleDrawer(anchor, false)}
