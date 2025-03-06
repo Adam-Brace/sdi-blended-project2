@@ -1,9 +1,10 @@
-import { useParams, Link } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Search.css";
 import PokemonCard from "../Card/PokemonCard";
 import { Button, Stack } from "@mui/material";
 import {ThemeProvider, createTheme} from "@mui/material";
+
 
 const theme = createTheme({
 	components: {
@@ -24,8 +25,12 @@ const theme = createTheme({
 
 const Search = () => {
 	const [pokemons, setPokemons] = useState([]);
-	let { query, filter } = useParams();
-	const arr = filter.toLowerCase().split(" ");
+	// let { query, filter } = useParams();
+	// const arr = filter.toLowerCase().split(" ");
+
+	const { query = "undefined", filter = "" } = useParams();
+	const arr = (filter || "").toLowerCase().split(" ");
+
 
 	useEffect(() => {
 		const fetchAllPokemon = async () => {
@@ -59,7 +64,7 @@ const Search = () => {
 			setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
-	});
+	}, [query, filter]);
 	// console.log(pokemons);
 	return (
 		<>
