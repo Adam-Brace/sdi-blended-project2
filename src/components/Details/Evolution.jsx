@@ -1,6 +1,6 @@
 import PokemonCard from "../Card/PokemonCard";
 import React, { useState, useEffect } from "react";
-import { Stack } from "@mui/material";
+import { Stack, CircularProgress } from "@mui/material";
 import "./Details.css";
 
 const EvolutionChain = ({ pokemonId }) => {
@@ -94,7 +94,7 @@ const EvolutionChain = ({ pokemonId }) => {
 				<h3>Evolution Chain:</h3>
 				<Stack className="evo-row" direction="row">
 					{loading ? (
-						<p>Loading...</p>
+						<CircularProgress />
 					) : (
 						pokemons.map((pokemon) => (
 							<PokemonCard key={pokemon.id} props={pokemon} />

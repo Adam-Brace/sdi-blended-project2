@@ -7,24 +7,24 @@ import { Container, CircularProgress, Stack, Divider } from "@mui/material";
 import "./Details.css";
 import EvolutionChain from "./Evolution.jsx";
 import { Button } from "@mui/material";
-import {ThemeProvider, createTheme} from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 const theme = createTheme({
 	components: {
 		MuiButton: {
-		defaultProps: {
-			variant: "contained", // Set "contained" as default
-		},
-		styleOverrides: {
-			root: {
-			fontSize: "1rem", // Change the default font size
-			textTransform: "none", // Optional: Remove uppercase style
-			color: "#f59342"
+			defaultProps: {
+				variant: "contained", // Set "contained" as default
+			},
+			styleOverrides: {
+				root: {
+					fontSize: "1rem", // Change the default font size
+					textTransform: "none", // Optional: Remove uppercase style
+					color: "#f59342",
+				},
 			},
 		},
-		},
 	},
-	});
+});
 
 const Details = () => {
 	const { id } = useParams();
@@ -122,125 +122,135 @@ const Details = () => {
 	return pokemon && flavor ? (
 		<Container className="mainContainer">
 			<ThemeProvider theme={theme}>
-			<Stack
-				direction="column"
-				divider={<Divider orientation="horizontal" flexItem />}
-				spacing={2}
-			>
-				<div className="banner">
-					<Stack direction="row" spacing={2} className="button">
-						<Button className="filter-button">
-							<Link className="links"
-								to="/"
-								style={{
-									textDecoration: "none",
-									color: "inherit",
-								}}
-							>
-								Home
-							</Link>
-						</Button>
-						<Button className="filter-button">
-							<Link className="links"
-								to="/Collection"
-								style={{
-									textDecoration: "none",
-									color: "inherit",
-								}}
-							>
-								My Collection
-							</Link>
-						</Button>
-						<Button className="filter-button">
-							<Link className="links"
-								to="/Wishlist"
-								style={{
-									textDecoration: "none",
-									color: "inherit",
-								}}
-							>
-								My Wishlist
-							</Link>
-						</Button>
-					</Stack>
-				</div>
-				<div className="identity">
-					<h1>
-						{" "}
-						{pokemon.id}{" "}
-						{pokemon.name.charAt(0).toUpperCase() +
-							pokemon.name.slice(1)}{" "}
-					</h1>
-					<Stack direction="row" spacing={2} className="images">
-						<div>
-							<h6>Standard</h6>
-							<img src={pokemon.sprites.front_default} />
-						</div>
-						<div>
-							<h6>Shiny</h6>
-							<img src={pokemon.sprites.front_shiny} />
-						</div>
-					</Stack>
-				</div>
-				<div className="stats">
-					<Stack
-						direction="row"
-						divider={<Divider orientation="vertical" flexItem />}
-						spacing={2}
-					>
+				<Stack
+					direction="column"
+					divider={<Divider orientation="horizontal" flexItem />}
+					spacing={2}
+				>
+					<div className="banner">
+						<Stack direction="row" spacing={2} className="button">
+							<Button className="filter-button">
+								<Link
+									className="links"
+									to="/"
+									style={{
+										textDecoration: "none",
+										color: "inherit",
+									}}
+								>
+									Home
+								</Link>
+							</Button>
+							<Button className="filter-button">
+								<Link
+									className="links"
+									to="/Collection"
+									style={{
+										textDecoration: "none",
+										color: "inherit",
+									}}
+								>
+									My Collection
+								</Link>
+							</Button>
+							<Button className="filter-button">
+								<Link
+									className="links"
+									to="/Wishlist"
+									style={{
+										textDecoration: "none",
+										color: "inherit",
+									}}
+								>
+									My Wishlist
+								</Link>
+							</Button>
+						</Stack>
+					</div>
+					<div className="identity">
+						<h1>
+							{" "}
+							{pokemon.id}{" "}
+							{pokemon.name.charAt(0).toUpperCase() +
+								pokemon.name.slice(1)}{" "}
+						</h1>
+						<Stack direction="row" spacing={2} className="images">
+							<div>
+								<h6>Standard</h6>
+								<img src={pokemon.sprites.front_default} />
+							</div>
+							<div>
+								<h6>Shiny</h6>
+								<img src={pokemon.sprites.front_shiny} />
+							</div>
+						</Stack>
+					</div>
+					<div className="stats">
 						<Stack
-							direction="column"
+							direction="row"
 							divider={
-								<Divider orientation="horizontal" flexItem />
+								<Divider orientation="vertical" flexItem />
 							}
 							spacing={2}
 						>
-							<h3>Types:</h3>
-							<ul>
-								{pokemon.types.map((item, index) => (
-									<li key={index}>{item.type.name}</li>
-								))}
-							</ul>
-							<h3>Stats:</h3>
-							<ul>
-								{pokemon.stats.map((item, index) => (
-									<li key={index}>
-										{item.stat.name} : {item.base_stat}
-									</li>
-								))}
-							</ul>
+							<Stack
+								direction="column"
+								divider={
+									<Divider
+										orientation="horizontal"
+										flexItem
+									/>
+								}
+								spacing={2}
+							>
+								<h3>Types:</h3>
+								<ul>
+									{pokemon.types.map((item, index) => (
+										<li key={index}>{item.type.name}</li>
+									))}
+								</ul>
+								<h3>Stats:</h3>
+								<ul>
+									{pokemon.stats.map((item, index) => (
+										<li key={index}>
+											{item.stat.name} : {item.base_stat}
+										</li>
+									))}
+								</ul>
+							</Stack>
+							<Stack
+								direction="column"
+								divider={<Divider orientation="horizontal" />}
+								spacing={2}
+							>
+								<h3>Moves:</h3>
+								<ul id="moves">
+									{pokemon.moves.map((item, index) => (
+										<li key={index}>{item.move.name}</li>
+									))}
+								</ul>
+							</Stack>
 						</Stack>
-						<Stack
-							direction="column"
-							divider={<Divider orientation="horizontal" />}
-							spacing={2}
-						>
-							<h3>Moves:</h3>
-							<ul id="moves">
-								{pokemon.moves.map((item, index) => (
-									<li key={index}>{item.move.name}</li>
-								))}
-							</ul>
-						</Stack>
-					</Stack>
+					</div>
+					<div className="flavour">
+						{" "}
+						{/* Why is there a u in flavor, guvna? */}
+						<h3>Additional Info:</h3>
+						<ul>
+							<li key="Height"> {`Height: ${pokemon.height}`}</li>
+							<li key="Weight"> {`Weight: ${pokemon.weight}`}</li>
+							<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
+						</ul>
+					</div>
+					<EvolutionChain pokemonId={id} />
+				</Stack>
+				<div style={{ height: "20px" }}>
+					{/* nothing to see here */}
 				</div>
-				<div className="flavour">
-					{" "}
-					{/* Why is there a u in flavor, guvna? */}
-					<h3>Additional Info:</h3>
-					<ul>
-						<li key="Height"> {`Height: ${pokemon.height}`}</li>
-						<li key="Weight"> {`Weight: ${pokemon.weight}`}</li>
-						<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
-					</ul>
-				</div>
-				<EvolutionChain pokemonId={id} />
-			</Stack>
-			<div style={{ height: "20px" }}>{/* nothing to see here */}</div>
 			</ThemeProvider>
 		</Container>
 	) : (
-		<p> loading </p>
+		<CircularProgress />
 	);
 };
 export default Details;
