@@ -83,7 +83,9 @@ const Wishlist = () => {
 					</Button>
 				</Stack>
 			</div>
-			<h1 className="wishlist">MY WISHLIST</h1>
+			<div className="wishlist-container">
+				<h1 className="wishlist">MY WISHLIST</h1>
+			</div>
 			<div className="pokemon-container">
 				{pokemons.length === 0 ? (
 					<p>Add something to your Wishlist</p>

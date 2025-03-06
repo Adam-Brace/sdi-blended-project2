@@ -173,7 +173,7 @@ const Details = () => {
 					</h1>
 					<Stack direction="row" spacing={2} className="images">
 						<div>
-							<h6>Regular</h6>
+							<h6>Standard</h6>
 							<img src={pokemon.sprites.front_default} />
 						</div>
 						<div>
