@@ -45,6 +45,7 @@
 }
 
 .carousel {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,16 +54,31 @@
 	padding: auto;
 }
 
+.prev-button {
+	position: absolute;
+	left: -20px;
+	/* top: 50%; */
+	/* transform: translateY(-50%); */
+}
+
+.next-button {
+	position: absolute;
+	right: -20px;
+	/* top: 50%; */
+	/* transform: translateY(-50%); */
+}
+
 .innerCarousel {
 	display: flex;
+	justify-content: center;
+	gap: 10px;
 	margin: 10px;
 	padding: 5px;
 	scroll-behavior: smooth;
-	justify-content: center;
+
 }
 
 .carousel-item {
-	flex: 0 0 25%;
 	text-align: center;
 	padding: 10px;
 }

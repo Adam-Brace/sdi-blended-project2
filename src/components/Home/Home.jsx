@@ -285,7 +285,7 @@ const Carousel = () => {
 				</div>
 				<div className="mainBody">
 					<div className="carousel">
-					<Button
+						<Button
 							className="prev-button"
 							onClick={handlePrevClick}
 							sx={{
