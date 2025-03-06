@@ -10,39 +10,55 @@ const EvolutionChain = ({ pokemonId }) => {
 
 	useEffect(() => {
 		const fetchEvolutionChain = async () => {
-			try {
-				// Step 1: Get species data to find the evolution chain URL
-				const speciesResponse = await fetch(
-					`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`
-				);
-				const speciesData = await speciesResponse.json();
-				const evolutionUrl = speciesData.evolution_chain.url;
+			if (
+				pokemonId == 133 ||
+				pokemonId == 134 ||
+				pokemonId == 135 ||
+				pokemonId == 136 ||
+				pokemonId == 196 ||
+				pokemonId == 197 ||
+				pokemonId == 470 ||
+				pokemonId == 471 ||
+				pokemonId == 700
+			) {
+				setEvolutions([133, 134, 135, 136, 196, 197, 470, 471, 700]);
+			} else {
+				try {
+					// Step 1: Get species data to find the evolution chain URL
+					const speciesResponse = await fetch(
+						`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`
+					);
+					const speciesData = await speciesResponse.json();
+					const evolutionUrl = speciesData.evolution_chain.url;
 
-				// Step 2: Fetch evolution chain data
-				const evolutionResponse = await fetch(evolutionUrl);
-				const evolutionData = await evolutionResponse.json();
+					// Step 2: Fetch evolution chain data
+					const evolutionResponse = await fetch(evolutionUrl);
+					const evolutionData = await evolutionResponse.json();
 
-				// Step 3: Extract evolution details
-				const extractEvolutions = (chain) => {
-					const evolutionArray = [];
-					let current = chain;
+					// Step 3: Extract evolution details
+					const extractEvolutions = (chain) => {
+						const evolutionArray = [];
+						let current = chain;
 
-					while (current) {
-						evolutionArray.push(current.species.url.split("/")[6]);
-						current = current.evolves_to.length
-							? current.evolves_to[0]
-							: null;
-					}
+						while (current) {
+							evolutionArray.push(
+								current.species.url.split("/")[6]
+							);
+							current = current.evolves_to.length
+								? current.evolves_to[0]
+								: null;
+						}
 
-					return evolutionArray;
-				};
+						return evolutionArray;
+					};
 
-				const evolutionsList = await extractEvolutions(
-					evolutionData.chain
-				);
-				setEvolutions(evolutionsList);
-			} catch (error) {
-				console.error("Error fetching evolution data:", error);
+					const evolutionsList = await extractEvolutions(
+						evolutionData.chain
+					);
+					setEvolutions(evolutionsList);
+				} catch (error) {
+					console.error("Error fetching evolution data:", error);
+				}
 			}
 		};
 
@@ -74,16 +90,16 @@ const EvolutionChain = ({ pokemonId }) => {
 
 	return (
 		<>
-			<Stack direction="column" className="evo-box" >
+			<Stack direction="column" className="evo-box">
 				<h3>Evolution Chain:</h3>
-				<Stack className = "evo-row" direction="row" spacing={2}>
-				{loading ? (
-					<p>Loading...</p>
-				) : (
-					pokemons.map((pokemon) => (
-						<PokemonCard key={pokemon.id} props={pokemon}></PokemonCard>
-					))
-				)}
+				<Stack className="evo-row" direction="row">
+					{loading ? (
+						<p>Loading...</p>
+					) : (
+						pokemons.map((pokemon) => (
+							<PokemonCard key={pokemon.id} props={pokemon} />
+						))
+					)}
 				</Stack>
 			</Stack>
 		</>
