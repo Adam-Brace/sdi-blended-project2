@@ -3,6 +3,23 @@ import { Link } from "react-router";
 import PokemonCard from "../Card/PokemonCard";
 import { Button, Stack } from "@mui/material";
 import "./Collection.css"
+import {ThemeProvider, createTheme} from "@mui/material";
+const theme = createTheme({
+	components: {
+		MuiButton: {
+		defaultProps: {
+			variant: "contained", // Set "contained" as default
+		},
+		styleOverrides: {
+			root: {
+			fontSize: "1rem", // Change the default font size
+			textTransform: "none", // Optional: Remove uppercase style
+			color: "#f59342"
+			},
+		},
+		},
+	},
+	});
 
 const Collection = () => {
 	const [collection, setCollection] = useState([]);
@@ -40,25 +57,24 @@ const Collection = () => {
 
 	return (
 		<>
+		<ThemeProvider theme={theme}>
 			<div className="banner">
 				<Stack direction="row" spacing={2} className="button">
 					<Button className="filter-button">
-						<Link
+						<Link className="links"
 							to="/"
 							style={{
 								textDecoration: "none",
-								color: "inherit",
 							}}
 						>
 							Home
 						</Link>
 					</Button>
 					<Button className="filter-button">
-						<Link
+						<Link className="links"
 							to="/Wishlist"
 							style={{
 								textDecoration: "none",
-								color: "inherit",
 							}}
 						>
 							My Wishlist
@@ -76,6 +92,7 @@ const Collection = () => {
 					))
 				)}
 			</div>
+			</ThemeProvider>
 		</>
 	);
 };
