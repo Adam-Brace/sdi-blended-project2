@@ -7,3 +7,15 @@
 	justify-items: center;
 	align-items: center;
 }
+
+.collection {
+	font-size: 60px;
+	font-weight: bold;
+	color: #42a5f5;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	text-shadow: 4px 4px 0px #1A1A1A, 8px 8px 0px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	padding: 10px 20px;
+	text-shadow: 6px 6px 0px #1A1A1A;
+}

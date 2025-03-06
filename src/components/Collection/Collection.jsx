@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PokemonCard from "../Card/PokemonCard";
 import { Button, Stack } from "@mui/material";
+import "./Collection.css"
 
 const Collection = () => {
 	const [collection, setCollection] = useState([]);
@@ -65,6 +66,7 @@ const Collection = () => {
 					</Button>
 				</Stack>
 			</div>
+			<h1 className="collection">MY COLLECTION</h1>
 			<div className="pokemon-container">
 				{pokemons.length === 0 ? (
 					<p>Add something to your Collection</p>
