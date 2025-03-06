@@ -93,7 +93,6 @@ const Carousel = () => {
 				}
 			}
 			shuffle(pokemonList);
-			//setPokemons(pokemonList);
 		};
 		fetchAllPokemon();
 	}, []);
@@ -135,6 +134,14 @@ const Carousel = () => {
 			window.location.href = searchLink();
 		}
 	};
+
+	const handleNextClick = () => {
+    setCurrentIndex((currentIndex + 4) % images.length);
+  };
+
+  const handlePrevClick = () => {
+    setCurrentIndex((currentIndex - 4 + images.length) % images.length);
+  };
 
 	return (
 		<Container>
@@ -271,30 +278,6 @@ const Carousel = () => {
 									</Link>
 								</Button>
 								</FormGroup>
-								{/* <Button
-									className="search-button"
-									variant="outlined"
-									sx={{
-										width: '70%',
-										textAlign: 'center',
-										margin: '0 auto',
-										backgroundColor: 'transparent',
-										boxShadow: 'none',
-										'&:hover': {
-											backgroundColor: 'rgba(0, 0, 0, 0.3)'
-										}
-									}}
-								>
-									<Link
-										to={searchLink()}
-										style={{
-											textDecoration: "none",
-											color: "inherit",
-										}}
-									>
-										Search
-									</Link>
-								</Button> */}
 							</SwipeableDrawer>
 						</Fragment>
 					))}
@@ -337,10 +320,8 @@ const Search = styled("div")(({ theme }) => ({
 		backgroundColor: alpha(theme.palette.common.white, 0.25),
 	},
 	marginLeft: 0,
-	// width: "100%",
 	[theme.breakpoints.up("sm")]: {
 		marginLeft: theme.spacing(1),
-		// width: "auto",
 	},
 }));
 
