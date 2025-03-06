@@ -137,12 +137,14 @@ const Carousel = () => {
 	};
 
 	const handleNextClick = () => {
-    setCurrentIndex((currentIndex + 4) % randomPokemons.length);
-  };
+		setCurrentIndex((currentIndex + 4) % randomPokemons.length);
+	};
 
-  const handlePrevClick = () => {
-    setCurrentIndex((currentIndex - 4 + randomPokemons.length) % randomPokemons.length);
-  };
+	const handlePrevClick = () => {
+		setCurrentIndex(
+			(currentIndex - 4 + randomPokemons.length) % randomPokemons.length
+		);
+	};
 
 	return (
 		<Container>
@@ -226,8 +228,8 @@ const Carousel = () => {
 								slotProps={{
 									paper: {
 										style: {
-											backgroundColor: 'transparent',
-											borderLeft: '1px solid #42a5f5'
+											backgroundColor: "transparent",
+											borderLeft: "1px solid #42a5f5",
 										},
 									},
 								}}
@@ -246,7 +248,7 @@ const Carousel = () => {
 									{types.map((type, index) => (
 										<FormControlLabel
 											key={type}
-											sx={{marginLeft: 2}}
+											sx={{ marginLeft: 2 }}
 											control={
 												<Checkbox
 													checked={checked[index]}
@@ -258,13 +260,14 @@ const Carousel = () => {
 											label={type}
 										/>
 									))}
-									<Button
+								</FormGroup>
+								<Button
 									className="search-button"
 									variant="outlined"
 									sx={{
-										width: '70%',
-										textAlign: 'center',
-										marginTop: 'auto',
+										width: "70%",
+										textAlign: "center",
+										marginTop: "auto",
 										marginLeft: 2,
 									}}
 								>
@@ -278,7 +281,6 @@ const Carousel = () => {
 										Search
 									</Link>
 								</Button>
-								</FormGroup>
 							</SwipeableDrawer>
 						</Fragment>
 					))}
@@ -289,12 +291,12 @@ const Carousel = () => {
 							className="prev-button"
 							onClick={handlePrevClick}
 							sx={{
-								fontSize: '120px',
-								cursor: 'pointer',
-								padding: '50px',
-								border: 'none',
-								outline: 'none',
-								backgroundImage: 'none',
+								fontSize: "120px",
+								cursor: "pointer",
+								padding: "50px",
+								border: "none",
+								outline: "none",
+								backgroundImage: "none",
 							}}
 						>
 							&#x2039;
@@ -321,12 +323,12 @@ const Carousel = () => {
 							className="next-button"
 							onClick={handleNextClick}
 							sx={{
-								fontSize: '120px',
-								cursor: 'pointer',
-								padding: '50px',
-								border: 'none',
-								outline: 'none',
-								backgroundImage: 'none',
+								fontSize: "120px",
+								cursor: "pointer",
+								padding: "50px",
+								border: "none",
+								outline: "none",
+								backgroundImage: "none",
 							}}
 						>
 							&#x203a;
