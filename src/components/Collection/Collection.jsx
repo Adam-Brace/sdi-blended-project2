@@ -12,7 +12,7 @@ const Collection = () => {
 		// Get collection from localStorage
 		const storedCollection = JSON.parse(localStorage.getItem("collection"));
 		if (storedCollection && Array.isArray(storedCollection)) {
-			setCollection(storedCollection);
+			setCollection(storedCollection.sort());
 		}
 	}, []); // Only run on component mount
 

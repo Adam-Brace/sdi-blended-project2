@@ -12,7 +12,7 @@ const Wishlist = () => {
 		// Get wishlist from localStorage
 		const storedWishlist = JSON.parse(localStorage.getItem("wishlist"));
 		if (storedWishlist && Array.isArray(storedWishlist)) {
-			setWishlist(storedWishlist);
+			setWishlist(storedWishlist.sort());
 		}
 	}, []); // Only run on component mount
 
