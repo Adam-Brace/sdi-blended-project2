@@ -240,61 +240,61 @@ const Carousel = () => {
 										backgroundColor: "rgba(0, 0, 0, 0.4)",
 									}}
 								>
-								<FormGroup
-									className="drawer"
-									style={{
-										color: "#42a5f5",
-										width: "200px",
-										padding: "10px",
-									}}
-								>
-									<FormControlLabel
-										label="ALL POKEMON"
-										control={
-											<Checkbox
-												checked={isAllChecked}
-												indeterminate={isSomeChecked}
-												onChange={handleChangeAll}
-											/>
-										}
-									/>
-									{types.map((type, index) => (
-										<FormControlLabel
-											key={type}
-											sx={{ marginLeft: 2 }}
-											control={
-												<Checkbox
-													checked={checked[index]}
-													onChange={handleChangeIndividual(
-														index
-													)}
-												/>
-											}
-											label={type}
-										/>
-									))}
-								</FormGroup>
-								<Button
-									className="search-button"
-									variant="outlined"
-									sx={{
-										width: "70%",
-										textAlign: "center",
-										marginTop: "auto",
-										margin: "auto",
-										marginBottom: " 30px",
-									}}
-								>
-									<Link
-										to={searchLink()}
+									<FormGroup
+										className="drawer"
 										style={{
-											textDecoration: "none",
-											color: "inherit",
+											color: "#42a5f5",
+											width: "200px",
+											padding: "10px",
 										}}
 									>
-										Search
-									</Link>
-								</Button>
+										<FormControlLabel
+											label="ALL POKEMON"
+											control={
+												<Checkbox
+													checked={isAllChecked}
+													indeterminate={isSomeChecked}
+													onChange={handleChangeAll}
+												/>
+											}
+										/>
+										{types.map((type, index) => (
+											<FormControlLabel
+												key={type}
+												sx={{ marginLeft: 2 }}
+												control={
+													<Checkbox
+														checked={checked[index]}
+														onChange={handleChangeIndividual(
+															index
+														)}
+													/>
+												}
+												label={type}
+											/>
+										))}
+									</FormGroup>
+									<Button
+										className="search-button"
+										variant="outlined"
+										sx={{
+											width: "70%",
+											textAlign: "center",
+											marginTop: "auto",
+											margin: "auto",
+											marginBottom: " 30px",
+										}}
+									>
+										<Link
+											to={searchLink()}
+											style={{
+												textDecoration: "none",
+												color: "inherit",
+											}}
+										>
+											Search
+										</Link>
+									</Button>
 								</Stack>
 							</SwipeableDrawer>
 						</Fragment>

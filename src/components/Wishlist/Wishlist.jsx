@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PokemonCard from "../Card/PokemonCard";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 const Wishlist = () => {
 	const [wishlist, setWishlist] = useState([]);
