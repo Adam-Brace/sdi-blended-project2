@@ -101,7 +101,7 @@ const Carousel = () => {
 	useEffect(() => {
 		const fetchAllPokemon = async () => {
 			const pokemonList = [];
-			for (let i = 152; i <= 251; i++) {
+			for (let i = 1; i <= 1025; i++) {
 				try {
 					const res = await fetch(
 						`https://pokeapi.co/api/v2/pokemon/${i}`
