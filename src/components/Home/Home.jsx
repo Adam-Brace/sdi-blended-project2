@@ -309,7 +309,8 @@ const Carousel = () => {
 								fontSize: "120px",
 								cursor: "pointer",
 								padding: "50px",
-								border: "none",
+								border: "1px solid #42a5f5",
+								borderRadius: "10px",
 								outline: "none",
 							}}
 						>
@@ -340,7 +341,8 @@ const Carousel = () => {
 								fontSize: "120px",
 								cursor: "pointer",
 								padding: "50px",
-								border: "none",
+								border: "1px solid #42a5f5",
+								borderRadius: "10px",
 								outline: "none",
 							}}
 						>
