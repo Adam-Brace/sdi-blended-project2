@@ -5,5 +5,10 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
+<<<<<<< HEAD
+=======
+	height: 100vh;
+	margin: 0;
+>>>>>>> 58a7586 (Centered (mostly) the carousel. Expanded the background image to always fill the whole browser screen.)
 	color: white;
 }
