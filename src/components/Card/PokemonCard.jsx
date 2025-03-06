@@ -106,12 +106,16 @@ export default function PokemonCard({ props: pokemon }) {
 					borderRadius: "10px",
 				}}
 			>
+				<Typography gutterBottom variant="h5" component="div">
+						{pokemon.id}
+					</Typography>
 				<Link
 					reloadDocument
 					to={`/details/${pokemon.id}`}
 					key={pokemon.id}
 					style={{ textDecoration: "none" }}
 				>
+					
 					<CardMedia
 						sx={{ height: 175 }}
 						image={pokemon.sprites.front_default}

@@ -82,7 +82,9 @@ const Collection = () => {
 					</Button>
 				</Stack>
 			</div>
-			<h1 className="collection">MY COLLECTION</h1>
+			<div className="wishlist-container">
+				<h1 className="collection">MY COLLECTION</h1>
+			</div>
 			<div className="pokemon-container">
 				{pokemons.length === 0 ? (
 					<p>Add something to your Collection</p>

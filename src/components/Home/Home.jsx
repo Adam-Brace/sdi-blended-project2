@@ -22,13 +22,15 @@ const theme = createTheme({
 	components: {
 	  MuiButton: {
 		defaultProps: {
-		  variant: "contained", // Set "contained" as default
+		  variant: "outlined",
 		},
 		styleOverrides: {
 		  root: {
 			fontSize: "1rem", // Change the default font size
 			textTransform: "none", // Optional: Remove uppercase style
-			color: "#f59342"
+			color: "#f59342",
+			backgroundColor: "rgba(0, 0, 0, 0.7)",
+			borderColor: "#f59342",
 		  },
 		},
 	  },
@@ -101,7 +103,7 @@ const Carousel = () => {
 	useEffect(() => {
 		const fetchAllPokemon = async () => {
 			const pokemonList = [];
-			for (let i = 152; i <= 251; i++) {
+			for (let i = 1; i <= 1025; i++) {
 				try {
 					const res = await fetch(
 						`https://pokeapi.co/api/v2/pokemon/${i}`
