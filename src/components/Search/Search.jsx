@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
 import "./Search.css";
 import PokemonCard from "../Card/PokemonCard";
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, CircularProgress, } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 const theme = createTheme({
@@ -24,12 +24,14 @@ const theme = createTheme({
 
 const Search = () => {
 	const [pokemons, setPokemons] = useState([]);
+	const [found, setFound] = useState(true)
 	let { query, filter } = useParams();
 	const arr = filter.toLowerCase().split(" ");
 
 	useEffect(() => {
 		const fetchAllPokemon = async () => {
 			const pokemonList = [];
+			let pokemonFound = false
 			for (let i = 1; i <= 1025; i++) {
 				try {
 					const res = await fetch(
@@ -45,6 +47,7 @@ const Search = () => {
 										pokemon.types[1].type.name === arr[k]
 									) {
 										pokemonList.push(pokemon);
+										pokemonFound = true
 										k = arr.length;
 									}
 								}
@@ -57,6 +60,7 @@ const Search = () => {
 				}
 			}
 			setPokemons(pokemonList);
+			setFound(pokemonFound)
 		};
 		fetchAllPokemon();
 	});
@@ -105,15 +109,17 @@ const Search = () => {
 					</Stack>
 				</div>
 				<div className="pokemon-container">
-					{pokemons.length != 0 ? (
+					{pokemons.length != 0? (
 						pokemons?.map((pokemon) => (
 							<div key={pokemon.id} className="carousel-item">
 								<PokemonCard props={pokemon}></PokemonCard>
 							</div>
-						))
-					) : (
-						<p>Pokemon Not found</p>
-					)}
+					))): (
+						found ? 
+						(<CircularProgress></CircularProgress>)
+						: 
+						<p>pokemon not found</p>)
+					}
 				</div>
 			</ThemeProvider>
 		</>
