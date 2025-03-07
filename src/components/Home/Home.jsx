@@ -216,20 +216,6 @@ const Carousel = () => {
 										onClick={toggleDrawer("right", true)}
 									>
 										<Link
-											to="/wishlist"
-											style={{
-												textDecoration: "none",
-												color: "inherit",
-											}}
-										>
-											My Wishlist
-										</Link>
-									</Button>
-									<Button
-										className="filter-button"
-										onClick={toggleDrawer("right", true)}
-									>
-										<Link
 											to="/collection"
 											style={{
 												textDecoration: "none",
@@ -237,6 +223,20 @@ const Carousel = () => {
 											}}
 										>
 											My Collection
+										</Link>
+									</Button>
+									<Button
+										className="filter-button"
+										onClick={toggleDrawer("right", true)}
+									>
+										<Link
+											to="/wishlist"
+											style={{
+												textDecoration: "none",
+												color: "inherit",
+											}}
+										>
+											My Wishlist
 										</Link>
 									</Button>
 								</div>
