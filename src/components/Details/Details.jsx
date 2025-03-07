@@ -68,7 +68,7 @@ const Details = () => {
 			} catch (error) {
 				console.error("Error fetching Pokémon:", error);
 			}
-			
+
 		};
 
 		const fetchAll = async () => {
@@ -77,6 +77,7 @@ const Details = () => {
 			await console.log(flavor)
 		};
 		fetchAll();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return pokemon && flavor ? (
