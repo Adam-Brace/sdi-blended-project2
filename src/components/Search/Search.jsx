@@ -23,7 +23,7 @@ const theme = createTheme({
 });
 
 const Search = () => {
-	const [found, setFound] = useState(false);
+	const [found, setFound] = useState(true);
 	const [pokemons, setPokemons] = useState([]);
 	let { query, filter } = useParams();
 	const arr = filter.toLowerCase().split(" ");
