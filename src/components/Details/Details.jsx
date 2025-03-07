@@ -23,6 +23,13 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiDivider: {
+			styleOverrides: {
+				root: {
+					borderColor: "#f59342"
+				}
+			}
+		}
 	},
 });
 
@@ -75,7 +82,7 @@ const Details = () => {
 			<ThemeProvider theme={theme}>
 				<Stack
 					direction="column"
-					divider={<Divider orientation="horizontal" flexItem />}
+					// divider={<Divider orientation="horizontal" flexItem />}
 					spacing={2}
 				>
 					<div className="banner">
