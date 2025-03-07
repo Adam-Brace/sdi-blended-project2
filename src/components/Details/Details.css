@@ -8,11 +8,19 @@
 .banner {
 	height: 5rem;
 }
+
 .identity {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.poke-num-name {
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10px 12px 8px 12px;
+	border-radius: 10px;
+	border: 1px solid #f59342;
 }
 
 .links {

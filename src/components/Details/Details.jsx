@@ -119,7 +119,7 @@ const Details = () => {
 						</Stack>
 					</div>
 					<div className="identity">
-						<h1>
+						<h1 className="poke-num-name">
 							{" "}
 							{pokemon.id}{" "}
 							{pokemon.name.charAt(0).toUpperCase() +
