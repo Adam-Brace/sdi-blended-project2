@@ -148,15 +148,15 @@ export default function PokemonCard({ props: pokemon }) {
 							display: "flex",
 						}}
 					>
-						<div onClick={handleIconWClick} role="button">
-							{iconW} {/*Wishlist*/}Wishlist
-						</div>
 						<div
 							onClick={handleIconCClick}
 							style={{ marginLeft: "5px" }}
 							role="button"
 						>
 							{iconC} {/*Collection*/}Collection
+						</div>
+						<div onClick={handleIconWClick} role="button">
+							{iconW} {/*Wishlist*/}Wishlist
 						</div>
 					</div>
 				</CardContent>
