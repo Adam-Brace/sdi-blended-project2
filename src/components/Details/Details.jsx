@@ -54,28 +54,30 @@ const Details = () => {
 
 		const fetchFlavor = async () => {
 			try {
+				let flavorList = []
 				const res = await fetch(
 					`https://pokeapi.co/api/v2/pokemon-species/${id}`
 				);
 				const data = await res.json();
 				for (let f of data.flavor_text_entries) {
-					console.log(f);
 					if (f.language.name == "en") {
-						setFlavor(f.flavor_text);
-						break;
+						flavorList.push(f.flavor_text);
 					}
 				}
+				setFlavor(flavorList)
 			} catch (error) {
 				console.error("Error fetching Pokémon:", error);
 			}
+			
 		};
 
 		const fetchAll = async () => {
 			await fetchFlavor();
 			await fetchPokemon();
+			await console.log(flavor)
 		};
 		fetchAll();
-	});
+	}, []);
 
 	return pokemon && flavor ? (
 		<Container className="mainContainer">
@@ -199,7 +201,7 @@ const Details = () => {
 								{`Height: ${Math.floor(pokemon.height * 0.328084)}' ${Math.round((pokemon.height * 0.328084 - Math.floor(pokemon.height * 0.328084)) * 12)}"`}
 							</li>
 							<li key="Weight"> {`Weight: ${Math.round(pokemon.weight * 0.220462)} lbs`}</li>
-							<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
+							<li key="FlavorText">{`Flavor Text: ${flavor[Math.floor(Math.random() * flavor.length)]}`}</li>
 						</ul>
 					</div>
 					<EvolutionChain pokemonId={id} />
