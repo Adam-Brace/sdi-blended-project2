@@ -41,19 +41,30 @@ const Search = () => {
 					);
 					const pokemon = await res.json();
 					if (query == "undefined" || pokemon.name.includes(query)) {
-						for (let j = 0; j < arr.length; j++) {
-							if (pokemon.types[0].type.name === arr[j]) {
-								for (let k = 0; k < arr.length; k++) {
-									if (
-										pokemon.types.length == 1 ||
-										pokemon.types[1].type.name === arr[k]
-									) {
-										pokemonList.push(pokemon);
-										pokemonFound = true;
-										k = arr.length;
+						if (arr.length == 1) {
+							if (
+								pokemon.types[0].type.name === arr[0] ||
+								pokemon.types[1].type.name === arr[0]
+							) {
+								pokemonList.push(pokemon);
+								pokemonFound = true;
+							}
+						} else {
+							for (let j = 0; j < arr.length; j++) {
+								if (pokemon.types[0].type.name === arr[j]) {
+									for (let k = 0; k < arr.length; k++) {
+										if (
+											pokemon.types.length == 1 ||
+											pokemon.types[1].type.name ===
+												arr[k]
+										) {
+											pokemonList.push(pokemon);
+											pokemonFound = true;
+											k = arr.length;
+										}
 									}
+									j = arr.length;
 								}
-								j = arr.length;
 							}
 						}
 					}
