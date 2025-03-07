@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-//import { styled } from "styled-components";
-import PokemonCard from "../Card/PokemonCard";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Container, CircularProgress, Stack, Divider } from "@mui/material";
