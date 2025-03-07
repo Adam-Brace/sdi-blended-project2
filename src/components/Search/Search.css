@@ -18,6 +18,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   padding: 25px 15px 5px 35px;
   border-radius: 20px;
+  border: 1px solid #f59342;
 }
 
 .carousel-item {
