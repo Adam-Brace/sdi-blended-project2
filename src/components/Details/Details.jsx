@@ -13,13 +13,15 @@ const theme = createTheme({
 	components: {
 		MuiButton: {
 			defaultProps: {
-				variant: "contained", // Set "contained" as default
+				variant: "outlined",
 			},
 			styleOverrides: {
 				root: {
 					fontSize: "1rem", // Change the default font size
 					textTransform: "none", // Optional: Remove uppercase style
 					color: "#f59342",
+					backgroundColor: "rgba(0, 0, 0, 0.7)",
+					borderColor: "#f59342",
 				},
 			},
 		},
@@ -29,23 +31,8 @@ const theme = createTheme({
 const Details = () => {
 	const { id } = useParams();
 
-	const [collection, setCollection] = useState([]);
-	const [wishlist, setWishlist] = useState([]);
 	const [pokemon, setPokemon] = useState();
-	const [evoChain, setEvoChain] = useState([]);
 	const [flavor, setFlavor] = useState([]);
-
-	useEffect(() => {
-		const storedCollection =
-			JSON.parse(localStorage.getItem("collectionPokemon")) || [];
-		setCollection(storedCollection);
-	}, []);
-
-	useEffect(() => {
-		const storedWishlist =
-			JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
-		setWishlist(storedWishlist);
-	}, []);
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
@@ -83,41 +70,7 @@ const Details = () => {
 			await fetchPokemon();
 		};
 		fetchAll();
-	}, []);
-
-	const addCollection = () => {
-		if (!pokemon) return;
-
-		const storedCollection =
-			JSON.parse(localStorage.getItem("collectionPokemon")) || [];
-
-		if (storedCollection.some((p) => p.id === pokemon.id)) return;
-
-		const updatedCollection = [...storedCollection, pokemon];
-		setCollection(updatedCollection);
-
-		localStorage.setItem(
-			"collectionPokemon",
-			JSON.stringify(updatedCollection)
-		);
-	};
-
-	const addWishlist = () => {
-		if (!pokemon) return;
-
-		const storedWishlist =
-			JSON.parse(localStorage.getItem("wishlistPokemon")) || [];
-
-		if (storedWishlist.some((p) => p.id === pokemon.id)) return;
-
-		const updatedWishlist = [...storedWishlist, pokemon];
-		setWishlist(updatedWishlist);
-
-		localStorage.setItem(
-			"wishlistPokemon",
-			JSON.stringify(updatedWishlist)
-		);
-	};
+	});
 
 	return pokemon && flavor ? (
 		<Container className="mainContainer">

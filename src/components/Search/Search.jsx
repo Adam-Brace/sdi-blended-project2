@@ -9,13 +9,15 @@ const theme = createTheme({
 	components: {
 		MuiButton: {
 			defaultProps: {
-				variant: "contained", // Set "contained" as default
+				variant: "outlined",
 			},
 			styleOverrides: {
 				root: {
 					fontSize: "1rem", // Change the default font size
 					textTransform: "none", // Optional: Remove uppercase style
 					color: "#f59342",
+					backgroundColor: "rgba(0, 0, 0, 0.7)",
+					borderColor: "#f59342",
 				},
 			},
 		},
@@ -25,7 +27,7 @@ const theme = createTheme({
 const Search = () => {
 	const [found, setFound] = useState(true);
 	const [pokemons, setPokemons] = useState([]);
-	let { query, filter } = useParams();
+	let { query, filter = "" } = useParams();
 	const arr = filter.toLowerCase().split(" ");
 
 	useEffect(() => {

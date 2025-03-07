@@ -8,19 +8,21 @@ import {ThemeProvider, createTheme} from "@mui/material";
 const theme = createTheme({
 	components: {
 		MuiButton: {
-		defaultProps: {
-			variant: "contained", // Set "contained" as default
-		},
-		styleOverrides: {
-			root: {
-			fontSize: "1rem", // Change the default font size
-			textTransform: "none", // Optional: Remove uppercase style
-			color: "#f59342"
+			defaultProps: {
+				variant: "outlined",
+			},
+			styleOverrides: {
+				root: {
+					fontSize: "1rem", // Change the default font size
+					textTransform: "none", // Optional: Remove uppercase style
+					color: "#f59342",
+					backgroundColor: "rgba(0, 0, 0, 0.7)",
+					borderColor: "#f59342",
+				},
 			},
 		},
-		},
 	},
-	});
+});
 
 const Wishlist = () => {
 	const [wishlist, setWishlist] = useState([]);
