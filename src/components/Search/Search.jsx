@@ -76,8 +76,7 @@ const Search = () => {
 			setFound(pokemonFound);
 		};
 		fetchAllPokemon();
-	}, [query, filter]);
-	// console.log(pokemons);
+	});
 	return (
 		<>
 			<ThemeProvider theme={theme}>
