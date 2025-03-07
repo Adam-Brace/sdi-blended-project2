@@ -107,15 +107,14 @@ export default function PokemonCard({ props: pokemon }) {
 				}}
 			>
 				<Typography gutterBottom variant="h5" component="div">
-						{pokemon.id}
-					</Typography>
+					{pokemon.id}
+				</Typography>
 				<Link
 					reloadDocument
 					to={`/details/${pokemon.id}`}
 					key={pokemon.id}
 					style={{ textDecoration: "none" }}
 				>
-
 					<CardMedia
 						sx={{ height: 175 }}
 						image={pokemon.sprites.front_default}
@@ -127,8 +126,20 @@ export default function PokemonCard({ props: pokemon }) {
 					/>
 				</Link>
 				<CardContent>
-					<Typography gutterBottom variant="h6" component="div" className="pokeText"
-					sx={{ fontSize: "20px" , textAlign:"center", height:"70px", alignItems:"center", justifyContent:"center", display:"flex"}}>
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="div"
+						className="pokeText"
+						sx={{
+							fontSize: "20px",
+							textAlign: "center",
+							height: "70px",
+							alignItems: "center",
+							justifyContent: "center",
+							display: "flex",
+						}}
+					>
 						{pokemon.name.charAt(0).toUpperCase() +
 							pokemon.name.slice(1)}
 					</Typography>
@@ -138,14 +149,14 @@ export default function PokemonCard({ props: pokemon }) {
 						}}
 					>
 						<div onClick={handleIconWClick} role="button">
-							{iconW} {/* Display the favorite icon */}
+							{iconW} {/*Wishlist*/}Wishlist
 						</div>
 						<div
 							onClick={handleIconCClick}
 							style={{ marginLeft: "5px" }}
 							role="button"
 						>
-							{iconC} {/* Display the favorite icon */}
+							{iconC} {/*Collection*/}Collection
 						</div>
 					</div>
 				</CardContent>
