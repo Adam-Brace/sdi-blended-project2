@@ -198,7 +198,7 @@ const Details = () => {
 							<li key="Height">
 								{`Height: ${Math.floor(pokemon.height * 0.328084)}' ${Math.round((pokemon.height * 0.328084 - Math.floor(pokemon.height * 0.328084)) * 12)}"`}
 							</li>
-							<li key="Weight"> {`Weight: ${Math.round(pokemon.weight * 0.0220462)} lbs`}</li>
+							<li key="Weight"> {`Weight: ${Math.round(pokemon.weight * 0.220462)} lbs`}</li>
 							<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
 						</ul>
 					</div>
