@@ -48,6 +48,7 @@
 	margin-bottom: 2px;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
+	border: 1px solid #f59342;
 }
 
 .search-field {
@@ -66,6 +67,7 @@
 	border-radius: 10px;
 	position: relative;
 	left: -2.5%;
+	border: 1px solid #f59342;
 }
 
 .carousel {
