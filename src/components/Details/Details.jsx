@@ -195,8 +195,10 @@ const Details = () => {
 						{/* Why is there a u in flavor, guvna? */}
 						<h3>Additional Info:</h3>
 						<ul>
-							<li key="Height"> {`Height: ${pokemon.height}`}</li>
-							<li key="Weight"> {`Weight: ${pokemon.weight}`}</li>
+							<li key="Height">
+								{`Height: ${Math.floor(pokemon.height * 0.328084)}' ${Math.round((pokemon.height * 0.328084 - Math.floor(pokemon.height * 0.328084)) * 12)}"`}
+							</li>
+							<li key="Weight"> {`Weight: ${Math.round(pokemon.weight * 0.0220462)} lbs`}</li>
 							<li key="FlavorText">{`Flavor Text: ${flavor}`}</li>
 						</ul>
 					</div>
