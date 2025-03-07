@@ -9,13 +9,15 @@ const theme = createTheme({
 	components: {
 		MuiButton: {
 			defaultProps: {
-				variant: "contained", // Set "contained" as default
+				variant: "outlined",
 			},
 			styleOverrides: {
 				root: {
 					fontSize: "1rem", // Change the default font size
 					textTransform: "none", // Optional: Remove uppercase style
 					color: "#f59342",
+					backgroundColor: "rgba(0, 0, 0, 0.7)",
+					borderColor: "#f59342",
 				},
 			},
 		},
