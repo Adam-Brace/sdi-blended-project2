@@ -255,7 +255,8 @@ const Carousel = () => {
 									slotProps={{
 										paper: {
 											style: {
-												backgroundColor: "transparent",
+												backgroundColor: "rgba(0, 0, 0, 0.4)",
+												backdropFilter: "blur(5px)",
 												borderLeft: "1px solid #f59342",
 											},
 										},
@@ -264,7 +265,6 @@ const Carousel = () => {
 									<Stack
 										sx={{
 											height: "100%",
-											backgroundColor: "rgba(0, 0, 0, 0.4)",
 										}}
 									>
 										<FormGroup
@@ -303,6 +303,7 @@ const Carousel = () => {
 										</FormGroup>
 										<Button
 											className="search-button"
+											id="search-section"
 											variant="outlined"
 											sx={{
 												width: "70%",
