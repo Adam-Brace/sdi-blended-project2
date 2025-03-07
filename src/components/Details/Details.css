@@ -28,12 +28,14 @@
 	margin: 10px;
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
+  border: 1px solid #f59342;
 }
 
 .stats {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
 	padding: 20px;
+  border: 1px solid #f59342;
 }
 
 #moves {
@@ -46,12 +48,14 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
 	padding: 0 20px 20px 20px;
+  border: 1px solid #f59342;
 }
 
 .evo-box {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
 	padding: 0 20px 20px 20px;
+  border: 1px solid #f59342;
 }
 
 .evo-row {

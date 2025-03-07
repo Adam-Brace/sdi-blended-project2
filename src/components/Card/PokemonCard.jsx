@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { cloneElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 const typeColor = {
@@ -115,7 +115,7 @@ export default function PokemonCard({ props: pokemon }) {
 					key={pokemon.id}
 					style={{ textDecoration: "none" }}
 				>
-					
+
 					<CardMedia
 						sx={{ height: 175 }}
 						image={pokemon.sprites.front_default}
@@ -127,7 +127,7 @@ export default function PokemonCard({ props: pokemon }) {
 					/>
 				</Link>
 				<CardContent>
-					<Typography gutterBottom variant="h6" component="div" className="pokeText" 
+					<Typography gutterBottom variant="h6" component="div" className="pokeText"
 					sx={{ fontSize: "20px" , textAlign:"center", height:"70px", alignItems:"center", justifyContent:"center", display:"flex"}}>
 						{pokemon.name.charAt(0).toUpperCase() +
 							pokemon.name.slice(1)}
